@@ -1,304 +1,241 @@
-/* ============================================================
-   ELVARTON KADWALA — Portfolio Script
-   Features: Custom Cursor · Scroll Reveal · Nav · Portfolio Filter · Form
-   ============================================================ */
+/**
+ * ELVARTON KADWALA — PORTFOLIO SCRIPT
+ * ─────────────────────────────────────
+ * 1. Loader
+ * 2. Nav sticky behaviour
+ * 3. Ticker
+ * 4. Scroll reveal (IntersectionObserver)
+ * 5. Skill bar animations
+ * 6. Animated counters
+ * 7. Contact form + localStorage inbox
+ * 8. Footer year
+ */
 
 'use strict';
 
-/* ── Utility ────────────────────────────────────────────────── */
-const $ = (sel, ctx = document) => ctx.querySelector(sel);
-const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+/* ══════════════════════════════════════════════════════════
+   1. LOADER
+   ══════════════════════════════════════════════════════════ */
+(function () {
+  let p = 0;
+  const bar    = document.getElementById('lBar');
+  const pctEl  = document.getElementById('lPct');
+  const loader = document.getElementById('loader');
 
-/* ── DOM Ready ──────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  initCursor();
-  initNav();
-  initScrollReveal();
-  initPortfolioFilter();
-  initContactForm();
-  initBackToTop();
-  setFooterYear();
+  const iv = setInterval(() => {
+    p += Math.random() * 16 + 5;
+    if (p >= 100) {
+      p = 100;
+      clearInterval(iv);
+      setTimeout(() => {
+        loader.classList.add('done');
+        onBoot();
+      }, 280);
+    }
+    bar.style.width      = p + '%';
+    pctEl.textContent    = Math.floor(p) + '%';
+  }, 70);
+})();
+
+/** Runs once the loader finishes */
+function onBoot() {
+  // Animate mini bars inside the hero card
+  document.querySelectorAll('.mbar-fill').forEach(b => b.classList.add('go'));
+  // Animate hero project counter
+  animCount(document.getElementById('heroNum'), 80, 1400);
+}
+
+/* ══════════════════════════════════════════════════════════
+   2. NAV — sticky on scroll
+   ══════════════════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('stuck', window.scrollY > 60);
 });
 
-/* ── Custom Cursor ──────────────────────────────────────────── */
-function initCursor() {
-  const cursor   = $('#cursor');
-  const follower = $('#cursor-follower');
-  if (!cursor || !follower) return;
-
-  // Skip on touch devices
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-
-  let mouseX = 0, mouseY = 0;
-  let followerX = 0, followerY = 0;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top  = mouseY + 'px';
-  });
-
-  // Smooth follower via rAF
-  function animateFollower() {
-    followerX += (mouseX - followerX) * 0.12;
-    followerY += (mouseY - followerY) * 0.12;
-    follower.style.left = followerX + 'px';
-    follower.style.top  = followerY + 'px';
-    requestAnimationFrame(animateFollower);
+/* ══════════════════════════════════════════════════════════
+   3. TICKER — build and inject items
+   ══════════════════════════════════════════════════════════ */
+(function () {
+  const el    = document.getElementById('tickerEl');
+  const words = [
+    'Logo Design', 'Brand Identity', 'Motion Graphics',
+    'Social Media', 'Print Design', 'Visual Identity',
+    'Poster Design', 'After Effects'
+  ];
+  let html = '';
+  // Duplicate for seamless loop
+  for (let i = 0; i < 2; i++) {
+    words.forEach(w => {
+      html += `<span class="t-item"><span class="t-dot"></span>${w}</span>`;
+    });
   }
-  animateFollower();
-
-  // Scale up on interactive elements
-  const hoverEls = $$('a, button, .portfolio-card, .skill-card, .filter-btn, .tag');
-  hoverEls.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width   = '14px';
-      cursor.style.height  = '14px';
-      follower.style.width  = '56px';
-      follower.style.height = '56px';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width   = '8px';
-      cursor.style.height  = '8px';
-      follower.style.width  = '36px';
-      follower.style.height = '36px';
-    });
-  });
-}
-
-/* ── Navigation ─────────────────────────────────────────────── */
-function initNav() {
-  const nav     = $('#nav');
-  const toggle  = $('#nav-toggle');
-  const menu    = $('#mobile-menu');
-  const mLinks  = $$('.mobile-link');
-
-  // Scroll-based nav style
-  const onScroll = () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  // Mobile toggle
-  let open = false;
-  toggle.addEventListener('click', () => {
-    open = !open;
-    menu.classList.toggle('open', open);
-    // Animate hamburger to X
-    const spans = toggle.querySelectorAll('span');
-    if (open) {
-      spans[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
-      spans[1].style.transform = 'rotate(-45deg) translate(4px, -4px)';
-    } else {
-      spans[0].style.transform = '';
-      spans[1].style.transform = '';
-    }
-  });
-
-  // Close menu on link click
-  mLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      open = false;
-      menu.classList.remove('open');
-      toggle.querySelectorAll('span').forEach(s => s.style.transform = '');
-    });
-  });
-
-  // Active nav link on scroll
-  const sections = $$('section[id]');
-  const navLinks  = $$('.nav-link');
-
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + entry.target.id) {
-            link.classList.add('active');
-          }
-        });
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-
-  sections.forEach(s => sectionObserver.observe(s));
-}
-
-/* ── Scroll Reveal ──────────────────────────────────────────── */
-function initScrollReveal() {
-  const revealEls = $$('.reveal-up');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  revealEls.forEach(el => observer.observe(el));
-
-  // Hero reveals on load
-  $$('.hero .reveal-up').forEach(el => {
-    // Allow CSS delay to handle it naturally
-    setTimeout(() => el.classList.add('visible'), 100);
-  });
-}
-
-/* ── Portfolio Filter ───────────────────────────────────────── */
-function initPortfolioFilter() {
-  const filterBtns  = $$('.filter-btn');
-  const cards       = $$('.portfolio-card');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Update active state
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-
-      cards.forEach(card => {
-        const category = card.dataset.category;
-        const show = filter === 'all' || category === filter;
-
-        if (show) {
-          card.classList.remove('hidden');
-          // Re-trigger reveal animation
-          card.classList.remove('visible');
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => card.classList.add('visible'));
-          });
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
-  });
-}
-
-/* ── Contact Form Validation ────────────────────────────────── */
-function initContactForm() {
-  const form    = $('#contact-form');
-  const success = $('#form-success');
-  if (!form) return;
-
-  // Helper: show/clear error
-  const setError = (fieldId, msg) => {
-    const input = $(`#${fieldId}`, form);
-    const errEl = $(`#${fieldId}-error`);
-    if (msg) {
-      input.classList.add('error');
-      errEl.textContent = msg;
-    } else {
-      input.classList.remove('error');
-      errEl.textContent = '';
-    }
-  };
-
-  const validate = () => {
-    let valid = true;
-
-    const name    = $('#name', form).value.trim();
-    const email   = $('#email', form).value.trim();
-    const subject = $('#subject', form).value.trim();
-    const message = $('#message', form).value.trim();
-
-    // Name
-    if (!name) {
-      setError('name', 'Please enter your name.');
-      valid = false;
-    } else if (name.length < 2) {
-      setError('name', 'Name must be at least 2 characters.');
-      valid = false;
-    } else {
-      setError('name', '');
-    }
-
-    // Email
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email) {
-      setError('email', 'Please enter your email.');
-      valid = false;
-    } else if (!emailRe.test(email)) {
-      setError('email', 'Please enter a valid email address.');
-      valid = false;
-    } else {
-      setError('email', '');
-    }
-
-    // Subject
-    if (!subject) {
-      setError('subject', 'Please enter a subject.');
-      valid = false;
-    } else {
-      setError('subject', '');
-    }
-
-    // Message
-    if (!message) {
-      setError('message', 'Please enter your message.');
-      valid = false;
-    } else if (message.length < 20) {
-      setError('message', 'Message should be at least 20 characters.');
-      valid = false;
-    } else {
-      setError('message', '');
-    }
-
-    return valid;
-  };
-
-  // Live validation on blur
-  $$('.form-input', form).forEach(input => {
-    input.addEventListener('blur', validate);
-  });
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-
-    // Simulate submission (replace with real API call)
-    const btn = $('button[type="submit"]', form);
-    const btnText = btn.querySelector('.btn-text');
-    btnText.textContent = 'Sending…';
-    btn.disabled = true;
-
-    setTimeout(() => {
-      form.style.display = 'none';
-      success.classList.add('visible');
-    }, 1400);
-  });
-}
-
-/* ── Back To Top ────────────────────────────────────────────── */
-function initBackToTop() {
-  const btn = $('#back-to-top');
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-/* ── Footer Year ────────────────────────────────────────────── */
-function setFooterYear() {
-  const el = $('#footer-year');
-  if (el) el.textContent = new Date().getFullYear();
-}
-
-/* ── Parallax on hero orbs (subtle) ────────────────────────── */
-(function heroParallax() {
-  const orb1 = $('.hero-orb--1');
-  const orb2 = $('.hero-orb--2');
-  if (!orb1 || !orb2) return;
-
-  window.addEventListener('mousemove', (e) => {
-    const cx = (e.clientX / window.innerWidth - 0.5);
-    const cy = (e.clientY / window.innerHeight - 0.5);
-    orb1.style.transform = `translate(${cx * 30}px, ${cy * 20}px)`;
-    orb2.style.transform = `translate(${cx * -20}px, ${cy * 15}px)`;
-  }, { passive: true });
+  el.innerHTML = html;
 })();
+
+/* ══════════════════════════════════════════════════════════
+   4. SCROLL REVEAL
+   ══════════════════════════════════════════════════════════ */
+const revealObs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
+  { threshold: 0.12 }
+);
+document.querySelectorAll('.rv, .rl, .rr').forEach(el => revealObs.observe(el));
+
+/* ══════════════════════════════════════════════════════════
+   5. SKILL BARS — animate when scrolled into view
+   ══════════════════════════════════════════════════════════ */
+const skillObs = new IntersectionObserver(
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.sk-fill').forEach(b => b.classList.add('go'));
+    }
+  }),
+  { threshold: 0.3 }
+);
+document.querySelectorAll('.skills-grid > div').forEach(g => skillObs.observe(g));
+
+/* ══════════════════════════════════════════════════════════
+   6. ANIMATED COUNTERS
+   ══════════════════════════════════════════════════════════ */
+
+/**
+ * Animate a number from 0 → target over `dur` ms.
+ * @param {HTMLElement} el
+ * @param {number}      target
+ * @param {number}      dur    duration in ms
+ */
+function animCount(el, target, dur) {
+  dur = dur || 1100;
+  let start = null;
+  const step = ts => {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / dur, 1);
+    el.textContent = Math.round(p * p * target);
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  };
+  requestAnimationFrame(step);
+}
+
+// Fire counters when the about stats enter view
+const cntObs = new IntersectionObserver(
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+      animCount(e.target, Number(e.target.dataset.count));
+      cntObs.unobserve(e.target);
+    }
+  }),
+  { threshold: 0.6 }
+);
+document.querySelectorAll('[data-count]').forEach(el => cntObs.observe(el));
+
+/* ══════════════════════════════════════════════════════════
+   7. CONTACT FORM + localStorage INBOX
+   ══════════════════════════════════════════════════════════ */
+const STORAGE_KEY = 'ek_portfolio_msgs';
+
+/** Read all messages from localStorage */
+function getMessages() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+/** Save messages array to localStorage */
+function saveMessages(msgs) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(msgs));
+}
+
+/** Escape HTML to prevent XSS in the inbox */
+function esc(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+/** Re-render the inbox from localStorage */
+function renderInbox() {
+  const msgs  = getMessages();
+  const badge = document.getElementById('iBadge');
+  const list  = document.getElementById('iList');
+
+  badge.textContent = msgs.length;
+
+  if (!msgs.length) {
+    list.innerHTML = '<div class="no-msg">No messages yet — send one above!</div>';
+    return;
+  }
+
+  list.innerHTML = msgs.map((m, i) => `
+    <div class="msg" style="animation-delay:${i * 0.06}s">
+      <div class="msg-head">
+        <span class="msg-from">${esc(m.name)}</span>
+        <span class="msg-time">${m.time}</span>
+      </div>
+      ${m.subject ? `<div class="msg-email">Re: ${esc(m.subject)}</div>` : ''}
+      <div class="msg-body">${esc(m.msg)}</div>
+      <div class="msg-email">${esc(m.email)}</div>
+    </div>
+  `).join('');
+}
+
+// Handle form submission
+document.getElementById('cForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const btn    = document.getElementById('fBtn');
+  const status = document.getElementById('fStatus');
+
+  // Loading state
+  btn.disabled    = true;
+  btn.textContent = 'Sending…';
+  status.textContent  = '';
+  status.className    = 'fstatus';
+
+  // Simulate async send (replace with real fetch() to a backend if needed)
+  setTimeout(() => {
+    const msg = {
+      name:    document.getElementById('fName').value.trim(),
+      email:   document.getElementById('fEmail').value.trim(),
+      subject: document.getElementById('fSubject').value.trim(),
+      msg:     document.getElementById('fMsg').value.trim(),
+      time:    new Date().toLocaleString('en-GB', {
+        day: '2-digit', month: 'short',
+        hour: '2-digit', minute: '2-digit'
+      }),
+    };
+
+    // Prepend to inbox, keep last 20
+    const all = getMessages();
+    all.unshift(msg);
+    saveMessages(all.slice(0, 20));
+
+    // Reset UI
+    e.target.reset();
+    btn.disabled    = false;
+    btn.textContent = 'Send Message ↗';
+
+    status.textContent = "✓ Sent! I'll get back to you soon.";
+    status.className   = 'fstatus ok';
+
+    renderInbox();
+
+    // Clear status after 5 s
+    setTimeout(() => {
+      status.textContent = '';
+      status.className   = 'fstatus';
+    }, 5000);
+  }, 900);
+});
+
+// Render inbox on page load
+renderInbox();
+
+/* ══════════════════════════════════════════════════════════
+   8. FOOTER YEAR
+   ══════════════════════════════════════════════════════════ */
+const yearEl = document.getElementById('yr');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
