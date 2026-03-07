@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Elvarton Kadwala — Graphic Designer based in Blantyre, Malawi." />
+  <title>Elvarton Kadwala — Graphic Designer</title>
+
+  <!-- Favicon inline SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f0e0c'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='serif' font-size='18' font-weight='700' fill='white'%3EEK%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>(function(){ if(typeof emailjs !== "undefined") emailjs.init({ publicKey: 'qDPANAa2__TIHugj4' }); })();</script>
+</head>
+<body>
+
+<!-- ══ LOADER ══════════════════════════════════════════════════ -->
+<div id="loader">
+  <div class="l-ring"></div>
+  <div class="l-name">Elvarton</div>
+  <div class="l-track"><div class="l-bar" id="lBar"></div></div>
+  <div class="l-pct" id="lPct">0%</div>
+</div>
+
+<!-- ══ FAB ═════════════════════════════════════════════════════ -->
+<button class="fab" id="fab" aria-label="Quick contact">
+  <span class="fab-icon"><i class="fa-solid fa-paper-plane"></i></span>
+  <span class="fab-label">Let's Talk</span>
+</button>
+
+<!-- ══ NAV ═════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo" aria-label="Home"><span class="nav-logo-mark">EK</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#work"       class="nav-link">Work</a>
+    <a href="#logos"      class="nav-link">Logos</a>
+    <a href="#gallery"    class="nav-link">Gallery</a>
+    <a href="#testimonials" class="nav-link">Reviews</a>
+    <a href="#about"      class="nav-link">About</a>
+    <a href="#contact"    class="nav-cta">Contact ↗</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <div class="hb-inner">
+      <span class="hb-line hb-top"></span>
+      <span class="hb-line hb-mid"></span>
+      <span class="hb-line hb-bot"></span>
+    </div>
+  </button>
+</nav>
+
+<div class="mob-menu" id="mobMenu" aria-hidden="true">
+  <a href="#work"         class="mob-link" data-delay="0">Work</a>
+  <a href="#logos"        class="mob-link" data-delay="1">Logos</a>
+  <a href="#gallery"      class="mob-link" data-delay="2">Gallery</a>
+  <a href="#testimonials" class="mob-link" data-delay="3">Reviews</a>
+  <a href="#about"        class="mob-link" data-delay="4">About</a>
+  <a href="#contact"      class="mob-link mob-cta" data-delay="5">Contact ↗</a>
+</div>
+
+<!-- ══ HERO ════════════════════════════════════════════════════ -->
+<section id="hero">
+  <!-- Animated circular shapes -->
+  <div class="hero-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-greeting" id="heroGreeting"></div>
+      <div class="hero-tag"><span class="tag-dot"></span>Available for projects</div>
+      <h1>Design<br>that <em>speaks</em><br>volumes.</h1>
+      <p class="hero-p">Graphic designer based in Blantyre, Malawi — crafting visual identities and creative digital experiences that cut through the noise.</p>
+      <div class="hero-btns">
+        <a href="#work" class="btn btn-dark">View Work →</a>
+        <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+      </div>
+    </div>
+    <div class="hero-card-wrap">
+      <div class="hero-card">
+        <div class="card-glow"></div>
+        <div class="card-lbl">Creative Output · 2025</div>
+        <div class="card-big" id="heroNum">0</div>
+        <div class="card-sub">Projects delivered</div>
+        <div class="mini-bars">
+          <div class="mbar-row"><span class="mbar-lbl">Logo Design</span><div class="mbar-track"><div class="mbar-fill" style="--w:95%"></div></div></div>
+          <div class="mbar-row"><span class="mbar-lbl">Branding</span><div class="mbar-track"><div class="mbar-fill" style="--w:90%"></div></div></div>
+          <div class="mbar-row"><span class="mbar-lbl">Motion</span><div class="mbar-track"><div class="mbar-fill" style="--w:80%"></div></div></div>
+        </div>
+        <div class="badges">
+          <span class="badge">Illustrator</span>
+          <span class="badge">Photoshop</span>
+          <span class="badge">After Effects</span>
+          <span class="badge">Canva</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TICKER ══════════════════════════════════════════════════ -->
+<div class="ticker"><div class="ticker-inner" id="tickerEl"></div></div>
+
+<!-- ══ RECENT WORK — STACKED CARDS SLIDER ══════════════════════ -->
+<section id="work" class="work-section">
+  <div class="s-inner">
+    <div class="s-lbl rv">Selected Work</div>
+    <h2 class="rv">Recent <em>projects</em></h2>
+    <p class="section-sub rv">Click any project to explore the full story — process, tools, timelines, and results.</p>
+
+    <div class="stack-slider rv" id="stackSlider">
+      <div class="stack-hint">Scroll through projects</div>
+      <div class="stack-track" id="stackTrack">
+
+        <!-- PROJECT 1 -->
+        <div class="stack-card" data-project="brand-identity">
+          <div class="sc-bg" style="background:linear-gradient(135deg,#1a1a18,#2e2c28)">
+            <img src="https://res.cloudinary.com/demo/image/upload/w_800,h_500,c_fill,g_auto/sample.jpg" onerror="this.style.display='none'" alt="Brand Identity" loading="lazy"/>
+            <div class="sc-overlay"></div>
+          </div>
+          <div class="sc-content" data-num="01">
+              <span class="sc-year">2024</span>
+            </div>
+            <h3>Brand Identity System</h3>
+            <p>Complete visual identity for a local Malawian retail business — from strategy to brand guidelines.</p>
+            <div class="sc-stats">
+              <span><strong>100+</strong> Assets</span>
+              <span><strong>6</strong> Weeks</span>
+              <span><strong>3×</strong> Engagement</span>
+            </div>
+            <button class="sc-cta" onclick="openProject('brand-identity')">View Case Study →</button>
+          </div>
+          <div class="sc-stars">
+            <div class="star-widget" data-project="brand-identity">
+              <span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="stack-card" data-project="motion-graphics">
+          <div class="sc-bg" style="background:linear-gradient(135deg,#0c0c0a,#1a1a18)">
+            <img src="https://res.cloudinary.com/demo/image/upload/w_800,h_500,c_fill,g_auto/cld-sample-2.jpg" onerror="this.style.display='none'" alt="Motion Graphics" loading="lazy"/>
+            <div class="sc-overlay"></div>
+          </div>
+          <div class="sc-content" data-num="02">
+            <div class="sc-meta">
+              <span class="sc-cat">Motion Graphics</span>
+              <span class="sc-year">2023</span>
+            </div>
+            <h3>Promotional Motion Package</h3>
+            <p>Animated intro, lower-thirds and full promotional video package for a business launch in Blantyre.</p>
+            <div class="sc-stats">
+              <span><strong>5</strong> Videos</span>
+              <span><strong>30s</strong> Hero</span>
+              <span><strong>10K+</strong> Views</span>
+            </div>
+            <button class="sc-cta" onclick="openProject('motion-graphics')">View Case Study →</button>
+          </div>
+          <div class="sc-stars">
+            <div class="star-widget" data-project="motion-graphics">
+              <span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="stack-card" data-project="social-media">
+          <div class="sc-bg" style="background:linear-gradient(135deg,#0a1a10,#123020)">
+            <img src="https://res.cloudinary.com/demo/image/upload/w_800,h_500,c_fill,g_auto/cld-sample-3.jpg" onerror="this.style.display='none'" alt="Social Media" loading="lazy"/>
+            <div class="sc-overlay"></div>
+          </div>
+          <div class="sc-content" data-num="03">
+            <div class="sc-meta">
+              <span class="sc-cat">Social Media</span>
+              <span class="sc-year">2024</span>
+            </div>
+            <h3>Social Media Content Pack</h3>
+            <p>40+ Instagram & Facebook design templates for a Malawian fashion brand — posts, stories, reels covers.</p>
+            <div class="sc-stats">
+              <span><strong>40+</strong> Templates</span>
+              <span><strong>2×</strong> Followers</span>
+              <span><strong>↑68%</strong> Engagement</span>
+            </div>
+            <button class="sc-cta" onclick="openProject('social-media')">View Case Study →</button>
+          </div>
+          <div class="sc-stars">
+            <div class="star-widget" data-project="social-media">
+              <span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 4 -->
+        <div class="stack-card" data-project="logo-design">
+          <div class="sc-bg" style="background:linear-gradient(135deg,#0d1520,#1a2d40)">
+            <img src="https://res.cloudinary.com/demo/image/upload/w_800,h_500,c_fill,g_auto/cld-sample-4.jpg" onerror="this.style.display='none'" alt="Logo Design" loading="lazy"/>
+            <div class="sc-overlay"></div>
+          </div>
+          <div class="sc-content" data-num="04">
+            <div class="sc-meta">
+              <span class="sc-cat">Logo Design</span>
+              <span class="sc-year">2024</span>
+            </div>
+            <h3>4NBuy E-Commerce Brand</h3>
+            <p>Modern logo and visual mark for a growing Malawian e-commerce platform with bold typographic identity.</p>
+            <div class="sc-stats">
+              <span><strong>12</strong> Variations</span>
+              <span><strong>2</strong> Weeks</span>
+              <span><strong>5★</strong> Rating</span>
+            </div>
+            <button class="sc-cta" onclick="openProject('logo-design')">View Case Study →</button>
+          </div>
+          <div class="sc-stars">
+            <div class="star-widget" data-project="logo-design">
+              <span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /track -->
+      <p class="stack-swipe-hint">← Swipe to browse →</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECT MODAL ════════════════════════════════════════════ -->
+<div id="projectModal" class="proj-modal" role="dialog" aria-modal="true">
+  <div class="proj-modal-bg" onclick="closeProject()"></div>
+  <div class="proj-modal-panel" id="projPanel">
+    <button class="proj-close" onclick="closeProject()" aria-label="Close">✕</button>
+    <div class="proj-modal-body" id="projBody">
+      <!-- Filled dynamically -->
+    </div>
+  </div>
+</div>
+
+<!-- ══ LOGO TILES ═══════════════════════════════════════════════ -->
+<section id="logos" class="logos-section">
+  <div class="s-inner">
+    <div class="logos-header rv">
+      <div>
+        <div class="s-lbl">Logo Work</div>
+        <h2>Marks &amp; <em>symbols</em></h2>
+      </div>
+      <p class="logos-sub">A curated selection of logo marks — crafted for businesses across Malawi and beyond. All rendered in timeless black &amp; white.</p>
+    </div>
+
+    <div class="logo-tiles rv">
+
+      <!-- col 1, rows 1–2 TALL -->
+      <div class="ltile" style="grid-column:1; grid-row:1/3;">
+        <div class="ltile-inner">
+          <svg viewBox="0 0 100 120" fill="none">
+            <circle cx="50" cy="46" r="32" stroke="white" stroke-width="2"/>
+            <circle cx="50" cy="46" r="18" stroke="white" stroke-width="1.2" stroke-dasharray="3 3"/>
+            <circle cx="50" cy="46" r="6" fill="white"/>
+            <line x1="50" y1="14" x2="50" y2="28" stroke="white" stroke-width="2"/>
+            <line x1="50" y1="64" x2="50" y2="78" stroke="white" stroke-width="2"/>
+            <line x1="18" y1="46" x2="32" y2="46" stroke="white" stroke-width="2"/>
+            <line x1="68" y1="46" x2="82" y2="46" stroke="white" stroke-width="2"/>
+            <text x="50" y="105" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white" opacity="0.5" letter-spacing="3">RADIUS</text>
+          </svg>
+          <div class="ltile-name">Radius Co.</div>
+          <div class="ltile-cat">Technology</div>
+        </div>
+      </div>
+
+      <!-- col 2–3, row 1 WIDE -->
+      <div class="ltile" style="grid-column:2/4; grid-row:1;">
+        <div class="ltile-inner">
+          <svg viewBox="0 0 180 70" fill="none">
+            <text x="10" y="55" font-family="Georgia,serif" font-size="52" font-weight="700" fill="white" letter-spacing="-4">EK</text>
+            <line x1="84" y1="6" x2="84" y2="64" stroke="white" stroke-width="1" opacity="0.2"/>
+            <text x="94" y="34" font-family="sans-serif" font-size="12" fill="white" opacity="0.7" letter-spacing="4">STUDIO</text>
+            <text x="94" y="50" font-family="sans-serif" font-size="8" fill="white" opacity="0.3" letter-spacing="2">BLANTYRE · MW</text>
+          </svg>
+          <div class="ltile-name">EK Studio</div>
+          <div class="ltile-cat">Personal Brand</div>
+        </div>
+      </div>
+
+      <!-- col 2, row 2 SMALL -->
+      <div class="ltile" style="grid-column:2; grid-row:2;">
+        <div class="ltile-inner">
+          <svg viewBox="0 0 100 100" fill="none">
+            <polygon points="50,8 92,76 8,76" stroke="white" stroke-width="2" fill="none"/>
+            <polygon points="50,26 74,70 26,70" stroke="white" stroke-width="1" fill="none" opacity="0.35"/>
+            <circle cx="50" cy="54" r="6" fill="white"/>
+          </svg>
+          <div class="ltile-name">Apex Studio</div>
+          <div class="ltile-cat">Agency</div>
+        </div>
+      </div>
+
+      <!-- col 3, row 2 SMALL -->
+      <div class="ltile" style="grid-column:3; grid-row:2;">
+        <div class="ltile-inner">
+          <svg viewBox="0 0 100 100" fill="none">
+            <rect x="16" y="16" width="30" height="30" stroke="white" stroke-width="2"/>
+            <rect x="54" y="16" width="30" height="30" fill="white"/>
+            <rect x="16" y="54" width="30" height="30" fill="white" opacity="0.3"/>
+            <rect x="54" y="54" width="30" height="30" stroke="white" stroke-width="2"/>
+          </svg>
+          <div class="ltile-name">Forma Group</div>
+          <div class="ltile-cat">Architecture</div>
+        </div>
+      </div>
+
+      <!-- col 4, row 1 SMALL -->
+      <div class="ltile" style="grid-column:4; grid-row:1;">
+        <div class="ltile-inner">
+          <svg viewBox="0 0 100 100" fill="none">
+            <path d="M50 12 L88 34 L88 66 L50 88 L12 66 L12 34 Z" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M50 28 L70 40 L70 60 L50 72 L30 60 L30 40 Z" stroke="white" stroke-width="1" fill="none" opacity="0.3"/>
+            <circle cx="50" cy="50" r="7" fill="white"/>
+          </svg>
+          <div class="ltile-name">Hexon Labs</div>
+          <div class="ltile-cat">Startup</div>
+        </div>
+      </div>
+
+      <!-- col 4, row 2 SMALL -->
+      <div class="ltile" style="grid-column:4; grid-row:2;">
+        <div class="ltile-inner">
+          <svg viewBox="0 0 100 100" fill="none">
+            <circle cx="36" cy="50" r="22" stroke="white" stroke-width="2"/>
+            <circle cx="64" cy="50" r="22" stroke="white" stroke-width="2"/>
+            <path d="M50 30 Q60 50 50 70 Q40 50 50 30Z" fill="white" opacity="0.2"/>
+          </svg>
+          <div class="ltile-name">Venn Media</div>
+          <div class="ltile-cat">Media &amp; PR</div>
+        </div>
+      </div>
+
+      <!-- col 5, rows 1–3 SUPER TALL -->
+      <div class="ltile" style="grid-column:5; grid-row:1/4;">
+        <div class="ltile-inner">
+          <svg viewBox="0 0 90 170" fill="none">
+            <circle cx="45" cy="48" r="28" stroke="white" stroke-width="2"/>
+            <path d="M24 48 Q30 28 45 22 Q60 28 66 48" stroke="white" stroke-width="1.5" fill="none" opacity="0.4"/>
+            <circle cx="45" cy="48" r="10" fill="white" opacity="0.1"/>
+            <circle cx="45" cy="48" r="4" fill="white"/>
+            <line x1="45" y1="76" x2="45" y2="130" stroke="white" stroke-width="2"/>
+            <line x1="24" y1="106" x2="66" y2="106" stroke="white" stroke-width="2"/>
+            <line x1="24" y1="106" x2="16" y2="126" stroke="white" stroke-width="1.5"/>
+            <line x1="66" y1="106" x2="74" y2="126" stroke="white" stroke-width="1.5"/>
+            <text x="45" y="155" text-anchor="middle" font-family="sans-serif" font-size="7" fill="white" opacity="0.4" letter-spacing="2">PINNACLE HR</text>
+          </svg>
+          <div class="ltile-name">Pinnacle HR</div>
+          <div class="ltile-cat">Human Resources</div>
+        </div>
+      </div>
+
+      <!-- row 3: col 1–2 WIDE -->
+      <div class="ltile" style="grid-column:1/3; grid-row:3;">
+        <div class="ltile-inner">
+          <svg viewBox="0 0 200 70" fill="none">
+            <path d="M16 55 L38 14 L60 46 L78 26 L102 55" stroke="white" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+            <circle cx="38" cy="14" r="4" fill="white"/>
+            <circle cx="78" cy="26" r="4" fill="white"/>
+            <line x1="6" y1="55" x2="160" y2="55" stroke="white" stroke-width="1" opacity="0.15"/>
+            <text x="116" y="40" font-family="sans-serif" font-size="14" fill="white" opacity="0.75" letter-spacing="2">RISE</text>
+            <text x="116" y="55" font-family="sans-serif" font-size="8" fill="white" opacity="0.3" letter-spacing="3">FINANCE</text>
+          </svg>
+          <div class="ltile-name">Rise Finance</div>
+          <div class="ltile-cat">Financial Services</div>
+        </div>
+      </div>
+
+      <!-- row 3: col 3 SMALL -->
+      <div class="ltile" style="grid-column:3; grid-row:3;">
+        <div class="ltile-inner">
+          <svg viewBox="0 0 100 100" fill="none">
+            <path d="M20 72 Q20 28 50 18 Q80 28 80 72" stroke="white" stroke-width="2" fill="none"/>
+            <line x1="20" y1="72" x2="80" y2="72" stroke="white" stroke-width="2"/>
+            <circle cx="50" cy="44" r="6" fill="white"/>
+          </svg>
+          <div class="ltile-name">Arch &amp; Co.</div>
+          <div class="ltile-cat">Construction</div>
+        </div>
+      </div>
+
+      <!-- row 3: col 4 SMALL -->
+      <div class="ltile" style="grid-column:4; grid-row:3;">
+        <div class="ltile-inner">
+          <svg viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="34" stroke="white" stroke-width="2" fill="none"/>
+            <circle cx="50" cy="50" r="22" stroke="white" stroke-width="1.2" fill="none" opacity="0.5"/>
+            <circle cx="50" cy="50" r="10" stroke="white" stroke-width="1" fill="none" opacity="0.25"/>
+            <circle cx="50" cy="50" r="4" fill="white"/>
+          </svg>
+          <div class="ltile-name">Orbit Brand</div>
+          <div class="ltile-cat">Consultancy</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══════════════════════════════════════════════════ -->
+<section id="gallery">
+  <div class="s-inner">
+    <div class="s-lbl rv">Portfolio Gallery</div>
+    <h2 class="rv">All <em>projects</em></h2>
+    <div class="gal-filters rv" role="tablist">
+      <button class="gal-btn active" data-filter="all"    role="tab">All</button>
+      <button class="gal-btn" data-filter="logo"          role="tab">Logo Design</button>
+      <button class="gal-btn" data-filter="brand"         role="tab">Brand Identity</button>
+      <button class="gal-btn" data-filter="poster"        role="tab">Posters &amp; Flyers</button>
+      <button class="gal-btn" data-filter="social"        role="tab">Social Media</button>
+      <button class="gal-btn" data-filter="motion"        role="tab">Motion</button>
+    </div>
+    <div class="gal-grid" id="galGrid">
+
+      <div class="gal-item rv" data-cat="logo">
+        <div class="gal-img-wrap">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_600,h_600,c_fill,g_auto,e_grayscale/sample.jpg" onerror="this.style.display='none'" alt="Logo Design 1" loading="lazy"/>
+          <div class="gal-placeholder" style="--c1:#1a1a18;--c2:#2e2c28"><span class="gp-label">Logo Design</span></div>
+          <div class="gal-overlay">
+            <div class="gal-info">
+              <span class="gal-cat">Logo Design</span>
+              <h3 class="gal-title">Minimalist Brand Mark</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gal-item rv gal-tall" data-cat="brand">
+        <div class="gal-img-wrap">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_600,h_900,c_fill,g_auto/cld-sample-2.jpg" onerror="this.style.display='none'" alt="Brand System" loading="lazy"/>
+          <div class="gal-placeholder" style="--c1:#0d1520;--c2:#1a2d40"><span class="gp-label">Brand System</span></div>
+          <div class="gal-overlay">
+            <div class="gal-info">
+              <span class="gal-cat">Brand Identity</span>
+              <h3 class="gal-title">Full Brand System</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gal-item rv" data-cat="poster">
+        <div class="gal-img-wrap">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_600,h_600,c_fill,g_auto/cld-sample-3.jpg" onerror="this.style.display='none'" alt="Poster" loading="lazy"/>
+          <div class="gal-placeholder" style="--c1:#1e0a0a;--c2:#3d1212"><span class="gp-label">Poster</span></div>
+          <div class="gal-overlay">
+            <div class="gal-info">
+              <span class="gal-cat">Poster Design</span>
+              <h3 class="gal-title">Event Poster</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gal-item rv gal-wide" data-cat="social">
+        <div class="gal-img-wrap">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_900,h_500,c_fill,g_auto/cld-sample-4.jpg" onerror="this.style.display='none'" alt="Social" loading="lazy"/>
+          <div class="gal-placeholder" style="--c1:#0a1a10;--c2:#123020"><span class="gp-label">Social Media</span></div>
+          <div class="gal-overlay">
+            <div class="gal-info">
+              <span class="gal-cat">Social Media</span>
+              <h3 class="gal-title">Instagram Template Pack</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gal-item rv" data-cat="logo">
+        <div class="gal-img-wrap">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_600,h_600,c_fill,g_auto,e_grayscale/cld-sample-5.jpg" onerror="this.style.display='none'" alt="Logo" loading="lazy"/>
+          <div class="gal-placeholder" style="--c1:#1a1a18;--c2:#3a3830"><span class="gp-label">Logo Design</span></div>
+          <div class="gal-overlay">
+            <div class="gal-info">
+              <span class="gal-cat">Logo Design</span>
+              <h3 class="gal-title">Wordmark Identity</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gal-item rv" data-cat="motion">
+        <div class="gal-img-wrap">
+          <div class="gal-placeholder" style="--c1:#0c0c0a;--c2:#1a1a18"><span class="gp-label">Motion</span></div>
+          <div class="gal-overlay">
+            <div class="gal-info">
+              <span class="gal-cat">Motion Graphics</span>
+              <h3 class="gal-title">Brand Animation Intro</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gal-item rv gal-tall" data-cat="brand">
+        <div class="gal-img-wrap">
+          <div class="gal-placeholder" style="--c1:#12090e;--c2:#2a1020"><span class="gp-label">Branding</span></div>
+          <div class="gal-overlay">
+            <div class="gal-info">
+              <span class="gal-cat">Brand Identity</span>
+              <h3 class="gal-title">Fashion Brand Identity</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gal-item rv" data-cat="poster">
+        <div class="gal-img-wrap">
+          <div class="gal-placeholder" style="--c1:#0a0f1a;--c2:#141e33"><span class="gp-label">Poster</span></div>
+          <div class="gal-overlay">
+            <div class="gal-info">
+              <span class="gal-cat">Poster Design</span>
+              <h3 class="gal-title">Product Launch Flyer</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS & RATINGS ═══════════════════════════════════ -->
+<section id="testimonials" class="testimonials-section">
+  <div class="s-inner">
+    <div class="s-lbl rv">Client Reviews</div>
+    <h2 class="rv">What clients <em>say</em></h2>
+
+    <div class="ratings-summary rv">
+      <div class="rs-score">4.9</div>
+      <div class="rs-detail">
+        <div class="rs-stars">★★★★★</div>
+        <div class="rs-count">Based on 35+ client reviews</div>
+        <div class="rs-bars">
+          <div class="rb-row"><span>5★</span><div class="rb-track"><div class="rb-fill" style="--w:88%"></div></div><span>88%</span></div>
+          <div class="rb-row"><span>4★</span><div class="rb-track"><div class="rb-fill" style="--w:10%"></div></div><span>10%</span></div>
+          <div class="rb-row"><span>3★</span><div class="rb-track"><div class="rb-fill" style="--w:2%"></div></div><span>2%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-grid rv">
+
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Elvarton completely transformed how our business is perceived. The new brand feels professional, memorable, and exactly us."</p>
+        <div class="test-author">
+          <div class="test-avatar">BM</div>
+          <div>
+            <div class="test-name">Business Owner</div>
+            <div class="test-role">Blantyre Retail, Malawi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card test-featured">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"The promo video looked like something from a big agency. People kept sharing it and asking who made it. Incredible work — exceeded every expectation we had."</p>
+        <div class="test-author">
+          <div class="test-avatar">CK</div>
+          <div>
+            <div class="test-name">Christine K.</div>
+            <div class="test-role">Business Owner, Blantyre</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Our feed finally looks like a real brand. Customers started commenting on how professional we looked almost immediately after launching."</p>
+        <div class="test-author">
+          <div class="test-avatar">FN</div>
+          <div>
+            <div class="test-name">Fashion Brand Owner</div>
+            <div class="test-role">Malawi Fashion</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Fast, professional, and creative. Delivered our logo system within two weeks and it was better than anything we imagined. Will definitely work together again."</p>
+        <div class="test-author">
+          <div class="test-avatar">TM</div>
+          <div>
+            <div class="test-name">Tafadzwa M.</div>
+            <div class="test-role">Startup Founder</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <div class="test-stars">★★★★☆</div>
+        <p class="test-text">"Very talented designer with a great eye for detail. The brand guidelines document was thorough and made it easy for our team to stay consistent."</p>
+        <div class="test-author">
+          <div class="test-avatar">LB</div>
+          <div>
+            <div class="test-name">L. Banda</div>
+            <div class="test-role">NGO Director</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"The social media templates saved us hours every week. Our engagement doubled within 60 days of using them. Worth every kwacha."</p>
+        <div class="test-author">
+          <div class="test-avatar">SC</div>
+          <div>
+            <div class="test-name">Social Manager</div>
+            <div class="test-role">Retail Brand, Malawi</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ════════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="s-inner">
+    <div class="about-grid">
+      <div class="rl">
+        <div class="about-img">
+          <img src="assets/profiles/elvarton_profile.png" alt="Elvarton Kadwala" class="about-photo" onerror="this.style.display='none'" />
+          <div class="about-img-bg"></div>
+          <div class="about-initials">EK</div>
+          <div class="about-sticker">
+            <div class="sticker-icon">✦</div>
+            <div>
+              <div class="sticker-main">Blantyre, Malawi</div>
+              <div class="sticker-sub">Open to remote work</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rr">
+        <div class="s-lbl">About Me</div>
+        <h2>Craft <em>first,</em><br>always.</h2>
+        <div class="about-text">
+          <p>"Design is not just how it looks — it's how it communicates and what it makes people feel."</p>
+          <p>I am a graphic designer based in Blantyre, Malawi with over <strong>4 years of experience</strong> creating impactful visual designs. My work focuses on branding, logo design, marketing materials, and digital visuals.</p>
+          <p>I combine creativity with modern design tools to deliver compelling visual identities. When I'm not designing, I'm exploring new motion techniques or finding inspiration in everyday life in Malawi.</p>
+        </div>
+        <div class="about-stats">
+          <div class="astat"><div class="astat-n" data-count="4">0</div><div class="astat-l">Years Exp.</div></div>
+          <div class="astat"><div class="astat-n" data-count="85">0</div><div class="astat-l">Projects</div></div>
+          <div class="astat"><div class="astat-n" data-count="35">0</div><div class="astat-l">Clients</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ═══════════════════════════════════════════════════ -->
+<section id="skills">
+  <div class="s-inner">
+    <div class="s-lbl rv">Skills</div>
+    <h2 class="rv">Tools of <em>the trade</em></h2>
+    <div class="skills-grid">
+      <div class="rv">
+        <div class="sg-title">Design &amp; Branding</div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-pen-nib"></i> Adobe Illustrator</span><span class="sk-pct">95%</span></div><div class="sk-track"><div class="sk-fill" style="--w:95%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-image"></i> Adobe Photoshop</span><span class="sk-pct">90%</span></div><div class="sk-track"><div class="sk-fill" style="--w:90%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-newspaper"></i> Adobe InDesign</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-fill" style="--w:85%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-brands fa-figma"></i> Figma</span><span class="sk-pct">80%</span></div><div class="sk-track"><div class="sk-fill" style="--w:80%"></div></div></div>
+      </div>
+      <div class="rv d2">
+        <div class="sg-title">Production &amp; Motion</div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-film"></i> After Effects</span><span class="sk-pct">82%</span></div><div class="sk-track"><div class="sk-fill" style="--w:82%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-clapperboard"></i> Premiere Pro</span><span class="sk-pct">78%</span></div><div class="sk-track"><div class="sk-fill" style="--w:78%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-palette"></i> Canva</span><span class="sk-pct">98%</span></div><div class="sk-track"><div class="sk-fill" style="--w:98%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-scissors"></i> CapCut</span><span class="sk-pct">92%</span></div><div class="sk-track"><div class="sk-fill" style="--w:92%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT — LIQUID GLASS FORM ══════════════════════════════ -->
+<section id="contact" class="contact-section">
+  <!-- Animated circular shapes -->
+  <div class="contact-orbs" aria-hidden="true">
+    <div class="co co-1"></div>
+    <div class="co co-2"></div>
+    <div class="co co-3"></div>
+    <div class="co co-4"></div>
+    <div class="co co-5"></div>
+    <div class="co co-6"></div>
+  </div>
+  <div class="s-inner">
+    <div class="contact-grid">
+      <div class="rl">
+        <div class="s-lbl">Contact</div>
+        <h2>Let's build<br><em>something</em><br>great.</h2>
+        <p class="contact-p">Available for freelance projects, brand work, and long-term partnerships. Based in Blantyre, Malawi — open to remote work worldwide. Usually reply within 24 hours.</p>
+      </div>
+      <div class="rr">
+        <!-- LIQUID GLASS FORM -->
+        <div class="glass-form-wrap">
+          <form class="glass-form" id="cForm" novalidate>
+            <div class="gf-row">
+              <div class="gf-group">
+                <label for="fName">Name</label>
+                <input class="gf-input" id="fName" name="from_name" placeholder="Your name" required />
+              </div>
+              <div class="gf-group">
+                <label for="fEmail">Email</label>
+                <input class="gf-input" id="fEmail" name="reply_to" type="email" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="gf-group">
+              <label for="fSubject">Subject</label>
+              <input class="gf-input" id="fSubject" name="subject" placeholder="Logo design, branding…" />
+            </div>
+            <div class="gf-group">
+              <label for="fMsg">Message</label>
+              <textarea class="gf-input gf-ta" id="fMsg" name="message" placeholder="Tell me about your project…" required></textarea>
+            </div>
+            <div class="gf-submit">
+              <button class="gf-btn" id="fBtn" type="submit">
+                <span class="gf-btn-text">Send Message</span>
+                <span class="gf-btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+              </button>
+              <span class="fstatus" id="fStatus"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════════════ -->
+<footer>
+  <div class="foot-social">
+    <a href="https://www.instagram.com/elvarton" target="_blank" rel="noopener" class="foot-icon"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/elvarton" target="_blank" rel="noopener" class="foot-icon"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://wa.me/265892048014" target="_blank" rel="noopener" class="foot-icon"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="/cdn-cgi/l/email-protection#27424b51465553484967424a464e4b0944484a" class="foot-icon"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+  <p class="foot-copy">© <span id="yr"></span> Elvarton Kadwala · <a href="#hero">Back to top ↑</a></p>
+</footer>
+
+
+
+<script>
+'use strict';
+
+/* ══ 1. LOADER ═════════════════════════════════════════════════ */
+(function () {
+  let p = 0;
+  const bar    = document.getElementById('lBar');
+  const pctEl  = document.getElementById('lPct');
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+  const iv = setInterval(() => {
+    p += Math.random() * 16 + 5;
+    if (p >= 100) {
+      p = 100; clearInterval(iv);
+      setTimeout(() => { loader.classList.add('done'); onBoot(); }, 280);
+    }
+    bar.style.width = p + '%';
+    pctEl.textContent = Math.floor(p) + '%';
+  }, 70);
+})();
+
+function onBoot() {
+  document.querySelectorAll('.mbar-fill').forEach(b => b.classList.add('go'));
+  animCount(document.getElementById('heroNum'), 80, 1400);
+  buildGreeting();
+}
+
+/* ══ 2. FAB ════════════════════════════════════════════════════ */
+const fab = document.getElementById('fab');
+if (fab) {
+  fab.addEventListener('click', () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }));
+  window.addEventListener('scroll', () => {
+    const contactEl = document.getElementById('contact');
+    if (!contactEl) return;
+    fab.classList.toggle('hidden', contactEl.getBoundingClientRect().top < window.innerHeight * 0.6);
+  }, { passive: true });
+}
+
+/* ══ 3. NAV ════════════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('stuck', window.scrollY > 60);
+}, { passive: true });
+
+const hamburger = document.getElementById('hamburger');
+const mobMenu   = document.getElementById('mobMenu');
+if (hamburger && mobMenu) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobMenu.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    mobMenu.setAttribute('aria-hidden', String(!isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobMenu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+/* ══ 4. TICKER ═════════════════════════════════════════════════ */
+(function () {
+  const el = document.getElementById('tickerEl');
+  if (!el) return;
+  const items = ['Brand Identity','Logo Design','Motion Graphics','Social Media','Visual Design','Blantyre · Malawi','Freelance Designer','Adobe CC','Canva Pro'];
+  let html = '';
+  for (let i = 0; i < 3; i++) items.forEach(t => { html += `<span>${t}</span><span class="dot">·</span>`; });
+  el.innerHTML = html;
+})();
+
+/* ══ 5. GREETING ═══════════════════════════════════════════════ */
+function buildGreeting() {
+  const el = document.getElementById('heroGreeting');
+  if (!el) return;
+  const h = new Date().getHours();
+  el.textContent = `${h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening'} — welcome to my portfolio`;
+}
+
+/* ══ 6. STACKED CARDS SLIDER ═══════════════════════════════════ */
+(function () {
+  const isMobile = () => window.innerWidth <= 768;
+  const cards = Array.from(document.querySelectorAll('.stack-card'));
+  if (!cards.length) return;
+  let current = 0;
+  let autoTimer = null;
+  let progressEl = null;
+  const STATES = ['sc-active','sc-behind1','sc-behind2','sc-behind3','sc-hidden'];
+
+  function applyStates(idx) {
+    if (isMobile()) return;
+    cards.forEach((c, i) => {
+      STATES.forEach(s => c.classList.remove(s));
+      const diff = (i - idx + cards.length) % cards.length;
+      if      (diff === 0) c.classList.add('sc-active');
+      else if (diff === 1) c.classList.add('sc-behind1');
+      else if (diff === 2) c.classList.add('sc-behind2');
+      else if (diff === 3) c.classList.add('sc-behind3');
+      else                 c.classList.add('sc-hidden');
+    });
+    current = idx;
+    resetProgress();
+  }
+
+  function next() { applyStates((current + 1) % cards.length); }
+  function prev() { applyStates((current - 1 + cards.length) % cards.length); }
+
+  function resetProgress() {
+    if (progressEl) progressEl.remove();
+    const activeCard = cards.find(c => c.classList.contains('sc-active'));
+    if (!activeCard) return;
+    progressEl = document.createElement('div');
+    progressEl.className = 'sc-progress';
+    activeCard.appendChild(progressEl);
+  }
+
+  applyStates(0);
+
+  function startAuto() { clearInterval(autoTimer); autoTimer = setInterval(next, 5000); }
+  function stopAuto()  { clearInterval(autoTimer); }
+
+  // Click active card to advance (not on CTA or stars)
+  cards.forEach(card => {
+    card.addEventListener('click', e => {
+      if (!card.classList.contains('sc-active')) return;
+      if (e.target.closest('.sc-cta') || e.target.closest('.star-widget')) return;
+      stopAuto(); next(); startAuto();
+    });
+  });
+
+  // Scroll-to-advance
+  const slider = document.getElementById('stackSlider');
+  let lastScrollY = window.scrollY;
+  let scrollDelta = 0;
+
+  window.addEventListener('scroll', () => {
+    if (isMobile()) return;
+    const rect = slider?.getBoundingClientRect();
+    if (!rect) return;
+    if (rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.3) {
+      scrollDelta += window.scrollY - lastScrollY;
+      if (scrollDelta > 100) { scrollDelta = 0; stopAuto(); next(); startAuto(); }
+      else if (scrollDelta < -100) { scrollDelta = 0; stopAuto(); prev(); startAuto(); }
+    } else { scrollDelta = 0; }
+    lastScrollY = window.scrollY;
+  }, { passive: true });
+
+  // Touch swipe
+  let txStart = 0;
+  slider?.addEventListener('touchstart', e => { txStart = e.touches[0].clientX; }, { passive: true });
+  slider?.addEventListener('touchend', e => {
+    if (isMobile()) return;
+    const dx = e.changedTouches[0].clientX - txStart;
+    if (Math.abs(dx) > 40) { stopAuto(); dx < 0 ? next() : prev(); startAuto(); }
+  });
+
+  slider?.addEventListener('mouseenter', stopAuto);
+  slider?.addEventListener('mouseleave', startAuto);
+
+  window.addEventListener('resize', () => {
+    if (isMobile()) cards.forEach(c => STATES.forEach(s => c.classList.remove(s)));
+    else applyStates(current);
+  });
+
+  startAuto();
+})();
+
+/* ══ 7. STAR RATINGS ════════════════════════════════════════════ */
+let ratings = {};
+try { ratings = JSON.parse(localStorage.getItem('ek-ratings') || '{}'); } catch(e) {}
+
+function initStarWidget(container, projectKey) {
+  if (!container) return;
+  const stars = Array.from(container.querySelectorAll('.star'));
+  const saved = ratings[projectKey] || 0;
+  const render = val => stars.forEach((s, i) => s.classList.toggle('lit', i < val));
+  render(saved);
+  stars.forEach((s, i) => {
+    s.addEventListener('mouseenter', () => render(i + 1));
+    s.addEventListener('mouseleave', () => render(ratings[projectKey] || 0));
+    s.addEventListener('click', () => {
+      ratings[projectKey] = i + 1;
+      try { localStorage.setItem('ek-ratings', JSON.stringify(ratings)); } catch(e) {}
+      render(i + 1);
+      document.querySelectorAll(`[data-project="${projectKey}"] .star`).forEach((x, j) => x.classList.toggle('lit', j <= i));
+    });
+  });
+}
+document.querySelectorAll('.star-widget').forEach(w => initStarWidget(w, w.dataset.project));
+
+/* ══ 8. PROJECT MODAL ══════════════════════════════════════════ */
+const projectData = {
+  'brand-identity': {
+    title:'Brand Identity System', cat:'Brand Identity', year:'2024',
+    subtitle:'Complete visual identity for a local Malawian retail business — from discovery workshops to final brand guidelines document.',
+    stats:[{n:'100+',l:'Brand Assets'},{n:'6',l:'Weeks'},{n:'3×',l:'Social Growth'}],
+    tools:['Adobe Illustrator','Adobe Photoshop','Adobe InDesign','6 Weeks'],
+    steps:[
+      {n:'01',h:'Discovery & Research',p:'Interviewed the client team, audited competitors, and mapped core brand values. Built a mood board to align direction before any design work.'},
+      {n:'02',h:'Concept Development',p:'Sketched 3 distinct logo directions and presented refined versions digitally with rationale for each creative choice.'},
+      {n:'03',h:'Identity System Build',p:'Developed the chosen concept into a full system: logo variants, colour palette, type hierarchy, iconography, and pattern assets.'},
+      {n:'04',h:'Brand Guidelines',p:'Produced a 20-page guidelines document covering logo usage, colour codes (HEX/RGB/CMYK), typography rules, and do/don\'t examples.'}
+    ],
+    quote:'"Elvarton completely transformed how our business is perceived. The new brand feels professional, memorable, and exactly us."',
+    quoteBy:'— Client, Blantyre Business Owner'
+  },
+  'motion-graphics': {
+    title:'Promotional Motion Package', cat:'Motion Graphics', year:'2023',
+    subtitle:'Animated intro, lower-thirds, and full promotional video package for a business launch campaign in Blantyre.',
+    stats:[{n:'5',l:'Video Assets'},{n:'10K+',l:'Organic Views'},{n:'3×',l:'Launch Footfall'}],
+    tools:['Adobe After Effects','Adobe Premiere Pro','Adobe Illustrator','3 Weeks'],
+    steps:[
+      {n:'01',h:'Brief & Storyboard',p:'Created a full storyboard mapping each scene, transition, and text moment before any animation started.'},
+      {n:'02',h:'Motion Identity Design',p:'Designed static assets in Illustrator then brought them to life in After Effects with eased animations and kinetic typography.'},
+      {n:'03',h:'Video Assembly',p:'Assembled raw footage with motion graphics in Premiere Pro. Added colour grading, sound design, and timing adjustments.'},
+      {n:'04',h:'Asset Delivery',p:'Exported all 5 assets in multiple formats for Instagram, Facebook, YouTube, and WhatsApp Status with a reusable template.'}
+    ],
+    quote:'"The promo video looked like something from a big agency. People kept sharing it and asking who made it. Incredible work."',
+    quoteBy:'— Client, Business Owner, Blantyre'
+  },
+  'social-media': {
+    title:'Social Media Content Pack', cat:'Social Media', year:'2024',
+    subtitle:'Consistent Instagram & Facebook design templates for a Malawian fashion brand — posts, stories, and reels covers.',
+    stats:[{n:'40+',l:'Templates'},{n:'2×',l:'Follower Growth'},{n:'↑68%',l:'Engagement'}],
+    tools:['Canva Pro','Adobe Photoshop','Adobe Illustrator','4 Weeks'],
+    steps:[
+      {n:'01',h:'Audit & Strategy',p:'Reviewed 3 months of past posts and mapped content categories. Created a posting strategy framework.'},
+      {n:'02',h:'Style Direction',p:'Defined a visual language: curated palette, two font pairings, and graphic elements for consistency.'},
+      {n:'03',h:'Template Design',p:'Designed 40+ editable Canva templates: feed posts, Stories, Facebook banners, and Reels covers.'},
+      {n:'04',h:'Handover & Training',p:'Delivered all templates with a usage guide and content calendar so the team could stay consistent independently.'}
+    ],
+    quote:'"Our feed finally looks like a real brand. Customers started commenting on how professional we looked almost immediately."',
+    quoteBy:'— Client, Fashion Brand Owner'
+  },
+  'logo-design': {
+    title:'4NBuy E-Commerce Brand', cat:'Logo Design', year:'2024',
+    subtitle:'Modern logo and visual mark for a growing Malawian e-commerce platform — bold, clean, and built to scale.',
+    stats:[{n:'12',l:'Variations'},{n:'2',l:'Weeks'},{n:'5★',l:'Client Rating'}],
+    tools:['Adobe Illustrator','Adobe Photoshop','2 Weeks'],
+    steps:[
+      {n:'01',h:'Brand Discovery',p:'Explored the platform\'s values — accessible, modern, trustworthy. Researched e-commerce logos to identify a distinct positioning.'},
+      {n:'02',h:'Sketching & Concepts',p:'Generated 20+ rough sketches narrowed to 3 strong digital concepts: wordmark, icon mark, and combined lockup.'},
+      {n:'03',h:'Refinement',p:'Refined the chosen direction through 2 revision rounds, testing across backgrounds, sizes, and print vs digital.'},
+      {n:'04',h:'Delivery',p:'Delivered all files in AI, EPS, SVG, PNG, and PDF — with light, dark, and single-colour versions for every use case.'}
+    ],
+    quote:'"Exactly what we needed — clean, professional, and flexible enough for everything from app icons to billboard banners."',
+    quoteBy:'— 4NBuy, Malawi'
+  }
+};
+
+function openProject(key) {
+  const d = projectData[key];
+  if (!d) return;
+  const modal = document.getElementById('projectModal');
+  const body  = document.getElementById('projBody');
+  const saved = ratings[key] || 0;
+
+  body.innerHTML = `
+    <div class="pm-hero-img" style="background:linear-gradient(135deg,#1a1a18,#0f0e0c);">
+      <div class="pm-hero-ph">${d.cat} · ${d.year}</div>
+    </div>
+    <div class="pm-meta">
+      <span class="pm-tag red">${d.cat}</span>
+      <span class="pm-tag">${d.year}</span>
+    </div>
+    <div class="pm-title">${d.title}</div>
+    <p class="pm-sub">${d.subtitle}</p>
+    <div class="pm-stats">${d.stats.map(s=>`<div class="pm-stat"><div class="pm-stat-n">${s.n}</div><div class="pm-stat-l">${s.l}</div></div>`).join('')}</div>
+    <div class="pm-section-lbl">Tools Used</div>
+    <div class="pm-tools">${d.tools.map(t=>`<span class="pm-tool">${t}</span>`).join('')}</div>
+    <div class="pm-section-lbl">Process</div>
+    <div class="pm-steps">${d.steps.map(s=>`<div class="pm-step"><div class="pm-step-n">${s.n}</div><div><h4>${s.h}</h4><p>${s.p}</p></div></div>`).join('')}</div>
+    <blockquote class="pm-quote">${d.quote}<cite>${d.quoteBy}</cite></blockquote>
+    <div class="pm-rate">
+      <div class="pm-rate-title">Rate this project</div>
+      <div class="pm-star-row">${[1,2,3,4,5].map(v=>`<span class="pm-star${v<=saved?' lit':''}"data-v="${v}">★</span>`).join('')}</div>
+    </div>`;
+
+  const pmStars = Array.from(body.querySelectorAll('.pm-star'));
+  pmStars.forEach((s, i) => {
+    s.addEventListener('mouseenter', () => pmStars.forEach((x,j) => x.classList.toggle('lit', j<=i)));
+    s.addEventListener('mouseleave', () => pmStars.forEach((x,j) => x.classList.toggle('lit', j<(ratings[key]||0))));
+    s.addEventListener('click', () => {
+      ratings[key] = i + 1;
+      try { localStorage.setItem('ek-ratings', JSON.stringify(ratings)); } catch(e) {}
+      pmStars.forEach((x,j) => x.classList.toggle('lit', j<=i));
+      document.querySelectorAll(`[data-project="${key}"] .star`).forEach((x,j) => x.classList.toggle('lit', j<=i));
+    });
+  });
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProject() {
+  document.getElementById('projectModal')?.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+window.openProject  = openProject;
+window.closeProject = closeProject;
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProject(); });
+
+/* ══ 9. SCROLL REVEAL ══════════════════════════════════════════ */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    revealObs.unobserve(entry.target);
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => revealObs.observe(el));
+
+// Skill bars
+const skillBarObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('.sk-fill').forEach(el => el.classList.add('go'));
+    entry.target.querySelectorAll('.rb-fill').forEach(el => el.classList.add('go'));
+    skillBarObs.unobserve(entry.target);
+  });
+}, { threshold: 0.25 });
+document.querySelectorAll('#skills, #testimonials').forEach(s => skillBarObs.observe(s));
+
+/* ══ 10. COUNTER — fires when about section enters view ═════════ */
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('[data-count]').forEach(el => {
+      animCount(el, parseInt(el.dataset.count, 10), 1400);
+    });
+    counterObs.unobserve(entry.target);
+  });
+}, { threshold: 0.3 });
+const aboutSec = document.getElementById('about');
+if (aboutSec) counterObs.observe(aboutSec);
+
+/* ══ 11. ANIMATED COUNTER ═══════════════════════════════════════ */
+function animCount(el, target, duration) {
+  if (!el) return;
+  const start = performance.now();
+  const step = now => {
+    const p = Math.min((now - start) / duration, 1);
+    el.textContent = Math.floor((1 - Math.pow(1-p, 3)) * target);
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  };
+  requestAnimationFrame(step);
+}
+
+/* ══ 12. HERO PARALLAX ══════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+  const y = window.scrollY;
+  hero.querySelectorAll('.orb').forEach((orb, i) => {
+    orb.style.transform = `translateY(${y * (0.06 + i * 0.03)}px)`;
+  });
+}, { passive: true });
+
+/* ══ 13. GALLERY FILTER ═════════════════════════════════════════ */
+(function () {
+  const btns = document.querySelectorAll('.gal-btn');
+  const items = document.querySelectorAll('.gal-item');
+  if (!btns.length) return;
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      items.forEach(item => item.classList.toggle('hidden', f !== 'all' && item.dataset.cat !== f));
+    });
+  });
+})();
+
+/* ══ 14. CONTACT FORM ═══════════════════════════════════════════ */
+(function () {
+  const form   = document.getElementById('cForm');
+  const btn    = document.getElementById('fBtn');
+  const status = document.getElementById('fStatus');
+  if (!form) return;
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name  = document.getElementById('fName')?.value.trim();
+    const email = document.getElementById('fEmail')?.value.trim();
+    const msg   = document.getElementById('fMsg')?.value.trim();
+    if (!name || !email || !msg) {
+      status.textContent = 'Please fill in all required fields.';
+      status.className = 'fstatus err'; return;
+    }
+    btn.disabled = true;
+    const t = btn.querySelector('.gf-btn-text');
+    if (t) t.textContent = 'Sending…';
+    status.textContent = '';
+    try {
+      if(typeof emailjs === "undefined") throw new Error("EmailJS not loaded"); await emailjs.sendForm('service_ekportfolio', 'template_ekcontact', form);
+      status.textContent = '✓ Message sent! I\'ll reply within 24 hours.';
+      status.className = 'fstatus ok'; form.reset();
+    } catch {
+      status.textContent = 'Failed to send. Please email directly.';
+      status.className = 'fstatus err';
+    } finally {
+      btn.disabled = false;
+      if (t) t.textContent = 'Send Message';
+    }
+  });
+})();
+
+/* ══ 15. FOOTER YEAR ════════════════════════════════════════════ */
+const yrEl = document.getElementById('yr');
+if (yrEl) yrEl.textContent = new Date().getFullYear();
+
+</script>
+</body>
+</html>
