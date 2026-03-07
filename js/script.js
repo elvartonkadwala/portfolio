@@ -1,40 +1,19 @@
-/**
- * ELVARTON KADWALA — PORTFOLIO SCRIPT
- * 1. Loader
- * 2. Nav — sticky + hamburger menu
- * 3. Ticker
- * 4. Animated greeting (time-based)
- * 5. Carousel slider (Recent Projects)
- * 6. Scroll reveal
- * 7. Skill bar animations
- * 8. Animated counters
- * 9. Contact form (clean, no inbox)
- * 10. Gallery filter + lightbox
- * 11. Footer year
- */
-
 'use strict';
 
-/* ══════════════════════════════════════════════════════════════
-   1. LOADER
-   ══════════════════════════════════════════════════════════════ */
+/* ══ 1. LOADER ═════════════════════════════════════════════════ */
 (function () {
   let p = 0;
   const bar    = document.getElementById('lBar');
   const pctEl  = document.getElementById('lPct');
   const loader = document.getElementById('loader');
-
+  if (!loader) return;
   const iv = setInterval(() => {
     p += Math.random() * 16 + 5;
     if (p >= 100) {
-      p = 100;
-      clearInterval(iv);
-      setTimeout(() => {
-        loader.classList.add('done');
-        onBoot();
-      }, 280);
+      p = 100; clearInterval(iv);
+      setTimeout(() => { loader.classList.add('done'); onBoot(); }, 280);
     }
-    bar.style.width   = p + '%';
+    bar.style.width = p + '%';
     pctEl.textContent = Math.floor(p) + '%';
   }, 70);
 })();
@@ -45,532 +24,390 @@ function onBoot() {
   buildGreeting();
 }
 
-/* ══════════════════════════════════════════════════════════════
-   2. NAV — sticky + hamburger
-   ══════════════════════════════════════════════════════════════ */
+/* ══ 2. FAB ════════════════════════════════════════════════════ */
+const fab = document.getElementById('fab');
+if (fab) {
+  fab.addEventListener('click', () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }));
+  window.addEventListener('scroll', () => {
+    const contactEl = document.getElementById('contact');
+    if (!contactEl) return;
+    fab.classList.toggle('hidden', contactEl.getBoundingClientRect().top < window.innerHeight * 0.6);
+  }, { passive: true });
+}
+
+/* ══ 3. NAV ════════════════════════════════════════════════════ */
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('stuck', window.scrollY > 60);
-});
+}, { passive: true });
 
 const hamburger = document.getElementById('hamburger');
 const mobMenu   = document.getElementById('mobMenu');
-
-hamburger.addEventListener('click', () => {
-  const isOpen = hamburger.classList.toggle('open');
-  mobMenu.classList.toggle('open', isOpen);
-  hamburger.setAttribute('aria-expanded', isOpen);
-  mobMenu.setAttribute('aria-hidden', !isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-});
-
-// Close mobile menu when a link is clicked
-document.querySelectorAll('.mob-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobMenu.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    mobMenu.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+if (hamburger && mobMenu) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobMenu.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    mobMenu.setAttribute('aria-hidden', String(!isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
-});
-
-/* ══════════════════════════════════════════════════════════════
-   3. TICKER
-   ══════════════════════════════════════════════════════════════ */
-(function () {
-  const el    = document.getElementById('tickerEl');
-  const words = [
-    'Logo Design', 'Brand Identity', 'Motion Graphics',
-    'Print Design', 'Visual Identity', 'Poster Design',
-    'After Effects', 'Canva Expert'
-  ];
-  let html = '';
-  for (let i = 0; i < 2; i++) {
-    words.forEach(w => {
-      html += `<span class="t-item"><span class="t-dot"></span>${w}</span>`;
+  document.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobMenu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
     });
-  }
-  el.innerHTML = html;
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   4. ANIMATED GREETING (time-based)
-   ══════════════════════════════════════════════════════════════ */
-function buildGreeting() {
-  const hour = new Date().getHours();
-  let greeting;
-
-  if (hour >= 5 && hour < 12) {
-    greeting = 'Good morning — welcome to my portfolio ☀️';
-  } else if (hour >= 12 && hour < 17) {
-    greeting = 'Good afternoon — glad you\'re here 🌤';
-  } else if (hour >= 17 && hour < 21) {
-    greeting = 'Good evening — let\'s create something 🌆';
-  } else {
-    greeting = 'Working late? Let\'s build something great 🌙';
-  }
-
-  const el = document.getElementById('heroGreeting');
-  if (!el) return;
-
-  // Animate each character with a stagger
-  let html = '';
-  [...greeting].forEach((char, i) => {
-    const delay = (i * 0.03 + 0.5).toFixed(2);
-    if (char === ' ') {
-      html += ' ';
-    } else {
-      html += `<span class="gr-char" style="animation-delay:${delay}s">${char}</span>`;
-    }
   });
-  el.innerHTML = html;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   5. CAROUSEL SLIDER
-   ══════════════════════════════════════════════════════════════ */
+/* ══ 4. TICKER ═════════════════════════════════════════════════ */
 (function () {
-  const carousel  = document.getElementById('carousel');
-  if (!carousel) return;
-
-  const slides    = Array.from(carousel.querySelectorAll('.carousel-slide'));
-  const dotsWrap  = document.getElementById('carDots');
-  const total     = slides.length;
-  let current     = 0;
-  let autoTimer   = null;
-  let isDragging  = false;
-  let dragStartX  = 0;
-
-  // Build dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'car-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-    dot.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(dot);
-  });
-
-  function getDots() { return dotsWrap.querySelectorAll('.car-dot'); }
-
-  function goTo(index) {
-    current = (index + total) % total;
-    carousel.style.transform = `translateX(-${current * 100}%)`;
-    getDots().forEach((d, i) => d.classList.toggle('active', i === current));
-    // Re-trigger bar animations on the newly visible slide
-    slides[current].querySelectorAll('.pv5-line').forEach(l => {
-      l.style.animation = 'none';
-      void l.offsetWidth;
-      l.style.animation = '';
-    });
-  }
-
-  // Apply CSS transform via inline style
-  carousel.style.cssText = 'display:flex; transition: transform .55s cubic-bezier(.23,1,.32,1); will-change: transform;';
-
-  // Auto-advance
-  function startAuto() {
-    autoTimer = setInterval(() => goTo(current + 1), 5000);
-  }
-  function resetAuto() {
-    clearInterval(autoTimer);
-    startAuto();
-  }
-  startAuto();
-
-  // Touch / drag support
-  carousel.addEventListener('mousedown',  e => { isDragging = true; dragStartX = e.clientX; carousel.style.transition = 'none'; });
-  carousel.addEventListener('touchstart', e => { isDragging = true; dragStartX = e.touches[0].clientX; carousel.style.transition = 'none'; }, {passive:true});
-
-  function dragEnd(endX) {
-    if (!isDragging) return;
-    isDragging = false;
-    carousel.style.transition = '';
-    const diff = dragStartX - endX;
-    if (Math.abs(diff) > 50) { goTo(diff > 0 ? current + 1 : current - 1); }
-    else { goTo(current); }
-    resetAuto();
-  }
-  window.addEventListener('mouseup',   e => dragEnd(e.clientX));
-  window.addEventListener('touchend',  e => dragEnd(e.changedTouches[0].clientX));
-
-  // Keyboard
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft')  { goTo(current - 1); resetAuto(); }
-    if (e.key === 'ArrowRight') { goTo(current + 1); resetAuto(); }
-  });
-
-  // Pause on hover
-  carousel.addEventListener('mouseenter', () => clearInterval(autoTimer));
-  carousel.addEventListener('mouseleave', startAuto);
+  const el = document.getElementById('tickerEl');
+  if (!el) return;
+  const items = ['Brand Identity','Logo Design','Motion Graphics','Social Media','Visual Design','Blantyre · Malawi','Freelance Designer','Adobe CC','Canva Pro'];
+  let html = '';
+  for (let i = 0; i < 3; i++) items.forEach(t => { html += `<span>${t}</span><span class="dot">·</span>`; });
+  el.innerHTML = html;
 })();
 
-/* ══════════════════════════════════════════════════════════════
-   6. SCROLL REVEAL
-   ══════════════════════════════════════════════════════════════ */
-const revealObs = new IntersectionObserver(
-  entries => entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('on');
-  }),
-  { threshold: 0.12 }
-);
-document.querySelectorAll('.rv, .rl, .rr').forEach(el => revealObs.observe(el));
-
-/* ══════════════════════════════════════════════════════════════
-   7. SKILL BARS
-   ══════════════════════════════════════════════════════════════ */
-const skillObs = new IntersectionObserver(
-  entries => entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.sk-fill').forEach(b => b.classList.add('go'));
-    }
-  }),
-  { threshold: 0.3 }
-);
-document.querySelectorAll('.skills-grid > div').forEach(g => skillObs.observe(g));
-
-/* ══════════════════════════════════════════════════════════════
-   8. ANIMATED COUNTERS
-   ══════════════════════════════════════════════════════════════ */
-function animCount(el, target, dur) {
+/* ══ 5. GREETING ═══════════════════════════════════════════════ */
+function buildGreeting() {
+  const el = document.getElementById('heroGreeting');
   if (!el) return;
-  dur = dur || 1100;
-  let start = null;
-  const step = ts => {
-    if (!start) start = ts;
-    const progress = Math.min((ts - start) / dur, 1);
-    el.textContent = Math.round(progress * progress * target);
-    if (progress < 1) requestAnimationFrame(step);
+  const h = new Date().getHours();
+  el.textContent = `${h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening'} — welcome to my portfolio`;
+}
+
+/* ══ 6. STACKED CARDS SLIDER ═══════════════════════════════════ */
+(function () {
+  const isMobile = () => window.innerWidth <= 768;
+  const cards = Array.from(document.querySelectorAll('.stack-card'));
+  if (!cards.length) return;
+  let current = 0;
+  let autoTimer = null;
+  let progressEl = null;
+  const STATES = ['sc-active','sc-behind1','sc-behind2','sc-behind3','sc-hidden'];
+
+  function applyStates(idx) {
+    if (isMobile()) return;
+    cards.forEach((c, i) => {
+      STATES.forEach(s => c.classList.remove(s));
+      const diff = (i - idx + cards.length) % cards.length;
+      if      (diff === 0) c.classList.add('sc-active');
+      else if (diff === 1) c.classList.add('sc-behind1');
+      else if (diff === 2) c.classList.add('sc-behind2');
+      else if (diff === 3) c.classList.add('sc-behind3');
+      else                 c.classList.add('sc-hidden');
+    });
+    current = idx;
+    resetProgress();
+  }
+
+  function next() { applyStates((current + 1) % cards.length); }
+  function prev() { applyStates((current - 1 + cards.length) % cards.length); }
+
+  function resetProgress() {
+    if (progressEl) progressEl.remove();
+    const activeCard = cards.find(c => c.classList.contains('sc-active'));
+    if (!activeCard) return;
+    progressEl = document.createElement('div');
+    progressEl.className = 'sc-progress';
+    activeCard.appendChild(progressEl);
+  }
+
+  applyStates(0);
+
+  function startAuto() { clearInterval(autoTimer); autoTimer = setInterval(next, 5000); }
+  function stopAuto()  { clearInterval(autoTimer); }
+
+  // Click active card to advance (not on CTA or stars)
+  cards.forEach(card => {
+    card.addEventListener('click', e => {
+      if (!card.classList.contains('sc-active')) return;
+      if (e.target.closest('.sc-cta') || e.target.closest('.star-widget')) return;
+      stopAuto(); next(); startAuto();
+    });
+  });
+
+  // Scroll-to-advance
+  const slider = document.getElementById('stackSlider');
+  let lastScrollY = window.scrollY;
+  let scrollDelta = 0;
+
+  window.addEventListener('scroll', () => {
+    if (isMobile()) return;
+    const rect = slider?.getBoundingClientRect();
+    if (!rect) return;
+    if (rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.3) {
+      scrollDelta += window.scrollY - lastScrollY;
+      if (scrollDelta > 100) { scrollDelta = 0; stopAuto(); next(); startAuto(); }
+      else if (scrollDelta < -100) { scrollDelta = 0; stopAuto(); prev(); startAuto(); }
+    } else { scrollDelta = 0; }
+    lastScrollY = window.scrollY;
+  }, { passive: true });
+
+  // Touch swipe
+  let txStart = 0;
+  slider?.addEventListener('touchstart', e => { txStart = e.touches[0].clientX; }, { passive: true });
+  slider?.addEventListener('touchend', e => {
+    if (isMobile()) return;
+    const dx = e.changedTouches[0].clientX - txStart;
+    if (Math.abs(dx) > 40) { stopAuto(); dx < 0 ? next() : prev(); startAuto(); }
+  });
+
+  slider?.addEventListener('mouseenter', stopAuto);
+  slider?.addEventListener('mouseleave', startAuto);
+
+  window.addEventListener('resize', () => {
+    if (isMobile()) cards.forEach(c => STATES.forEach(s => c.classList.remove(s)));
+    else applyStates(current);
+  });
+
+  startAuto();
+})();
+
+/* ══ 7. STAR RATINGS ════════════════════════════════════════════ */
+let ratings = {};
+try { ratings = JSON.parse(localStorage.getItem('ek-ratings') || '{}'); } catch(e) {}
+
+function initStarWidget(container, projectKey) {
+  if (!container) return;
+  const stars = Array.from(container.querySelectorAll('.star'));
+  const saved = ratings[projectKey] || 0;
+  const render = val => stars.forEach((s, i) => s.classList.toggle('lit', i < val));
+  render(saved);
+  stars.forEach((s, i) => {
+    s.addEventListener('mouseenter', () => render(i + 1));
+    s.addEventListener('mouseleave', () => render(ratings[projectKey] || 0));
+    s.addEventListener('click', () => {
+      ratings[projectKey] = i + 1;
+      try { localStorage.setItem('ek-ratings', JSON.stringify(ratings)); } catch(e) {}
+      render(i + 1);
+      document.querySelectorAll(`[data-project="${projectKey}"] .star`).forEach((x, j) => x.classList.toggle('lit', j <= i));
+    });
+  });
+}
+document.querySelectorAll('.star-widget').forEach(w => initStarWidget(w, w.dataset.project));
+
+/* ══ 8. PROJECT MODAL ══════════════════════════════════════════ */
+const projectData = {
+  'brand-identity': {
+    title:'Brand Identity System', cat:'Brand Identity', year:'2024',
+    subtitle:'Complete visual identity for a local Malawian retail business — from discovery workshops to final brand guidelines document.',
+    stats:[{n:'100+',l:'Brand Assets'},{n:'6',l:'Weeks'},{n:'3×',l:'Social Growth'}],
+    tools:['Adobe Illustrator','Adobe Photoshop','Adobe InDesign','6 Weeks'],
+    steps:[
+      {n:'01',h:'Discovery & Research',p:'Interviewed the client team, audited competitors, and mapped core brand values. Built a mood board to align direction before any design work.'},
+      {n:'02',h:'Concept Development',p:'Sketched 3 distinct logo directions and presented refined versions digitally with rationale for each creative choice.'},
+      {n:'03',h:'Identity System Build',p:'Developed the chosen concept into a full system: logo variants, colour palette, type hierarchy, iconography, and pattern assets.'},
+      {n:'04',h:'Brand Guidelines',p:'Produced a 20-page guidelines document covering logo usage, colour codes (HEX/RGB/CMYK), typography rules, and do/don\'t examples.'}
+    ],
+    quote:'"Elvarton completely transformed how our business is perceived. The new brand feels professional, memorable, and exactly us."',
+    quoteBy:'— Client, Blantyre Business Owner'
+  },
+  'motion-graphics': {
+    title:'Promotional Motion Package', cat:'Motion Graphics', year:'2023',
+    subtitle:'Animated intro, lower-thirds, and full promotional video package for a business launch campaign in Blantyre.',
+    stats:[{n:'5',l:'Video Assets'},{n:'10K+',l:'Organic Views'},{n:'3×',l:'Launch Footfall'}],
+    tools:['Adobe After Effects','Adobe Premiere Pro','Adobe Illustrator','3 Weeks'],
+    steps:[
+      {n:'01',h:'Brief & Storyboard',p:'Created a full storyboard mapping each scene, transition, and text moment before any animation started.'},
+      {n:'02',h:'Motion Identity Design',p:'Designed static assets in Illustrator then brought them to life in After Effects with eased animations and kinetic typography.'},
+      {n:'03',h:'Video Assembly',p:'Assembled raw footage with motion graphics in Premiere Pro. Added colour grading, sound design, and timing adjustments.'},
+      {n:'04',h:'Asset Delivery',p:'Exported all 5 assets in multiple formats for Instagram, Facebook, YouTube, and WhatsApp Status with a reusable template.'}
+    ],
+    quote:'"The promo video looked like something from a big agency. People kept sharing it and asking who made it. Incredible work."',
+    quoteBy:'— Client, Business Owner, Blantyre'
+  },
+  'social-media': {
+    title:'Social Media Content Pack', cat:'Social Media', year:'2024',
+    subtitle:'Consistent Instagram & Facebook design templates for a Malawian fashion brand — posts, stories, and reels covers.',
+    stats:[{n:'40+',l:'Templates'},{n:'2×',l:'Follower Growth'},{n:'↑68%',l:'Engagement'}],
+    tools:['Canva Pro','Adobe Photoshop','Adobe Illustrator','4 Weeks'],
+    steps:[
+      {n:'01',h:'Audit & Strategy',p:'Reviewed 3 months of past posts and mapped content categories. Created a posting strategy framework.'},
+      {n:'02',h:'Style Direction',p:'Defined a visual language: curated palette, two font pairings, and graphic elements for consistency.'},
+      {n:'03',h:'Template Design',p:'Designed 40+ editable Canva templates: feed posts, Stories, Facebook banners, and Reels covers.'},
+      {n:'04',h:'Handover & Training',p:'Delivered all templates with a usage guide and content calendar so the team could stay consistent independently.'}
+    ],
+    quote:'"Our feed finally looks like a real brand. Customers started commenting on how professional we looked almost immediately."',
+    quoteBy:'— Client, Fashion Brand Owner'
+  },
+  'logo-design': {
+    title:'4NBuy E-Commerce Brand', cat:'Logo Design', year:'2024',
+    subtitle:'Modern logo and visual mark for a growing Malawian e-commerce platform — bold, clean, and built to scale.',
+    stats:[{n:'12',l:'Variations'},{n:'2',l:'Weeks'},{n:'5★',l:'Client Rating'}],
+    tools:['Adobe Illustrator','Adobe Photoshop','2 Weeks'],
+    steps:[
+      {n:'01',h:'Brand Discovery',p:'Explored the platform\'s values — accessible, modern, trustworthy. Researched e-commerce logos to identify a distinct positioning.'},
+      {n:'02',h:'Sketching & Concepts',p:'Generated 20+ rough sketches narrowed to 3 strong digital concepts: wordmark, icon mark, and combined lockup.'},
+      {n:'03',h:'Refinement',p:'Refined the chosen direction through 2 revision rounds, testing across backgrounds, sizes, and print vs digital.'},
+      {n:'04',h:'Delivery',p:'Delivered all files in AI, EPS, SVG, PNG, and PDF — with light, dark, and single-colour versions for every use case.'}
+    ],
+    quote:'"Exactly what we needed — clean, professional, and flexible enough for everything from app icons to billboard banners."',
+    quoteBy:'— 4NBuy, Malawi'
+  }
+};
+
+function openProject(key) {
+  const d = projectData[key];
+  if (!d) return;
+  const modal = document.getElementById('projectModal');
+  const body  = document.getElementById('projBody');
+  const saved = ratings[key] || 0;
+
+  body.innerHTML = `
+    <div class="pm-hero-img" style="background:linear-gradient(135deg,#1a1a18,#0f0e0c);">
+      <div class="pm-hero-ph">${d.cat} · ${d.year}</div>
+    </div>
+    <div class="pm-meta">
+      <span class="pm-tag red">${d.cat}</span>
+      <span class="pm-tag">${d.year}</span>
+    </div>
+    <div class="pm-title">${d.title}</div>
+    <p class="pm-sub">${d.subtitle}</p>
+    <div class="pm-stats">${d.stats.map(s=>`<div class="pm-stat"><div class="pm-stat-n">${s.n}</div><div class="pm-stat-l">${s.l}</div></div>`).join('')}</div>
+    <div class="pm-section-lbl">Tools Used</div>
+    <div class="pm-tools">${d.tools.map(t=>`<span class="pm-tool">${t}</span>`).join('')}</div>
+    <div class="pm-section-lbl">Process</div>
+    <div class="pm-steps">${d.steps.map(s=>`<div class="pm-step"><div class="pm-step-n">${s.n}</div><div><h4>${s.h}</h4><p>${s.p}</p></div></div>`).join('')}</div>
+    <blockquote class="pm-quote">${d.quote}<cite>${d.quoteBy}</cite></blockquote>
+    <div class="pm-rate">
+      <div class="pm-rate-title">Rate this project</div>
+      <div class="pm-star-row">${[1,2,3,4,5].map(v=>`<span class="pm-star${v<=saved?' lit':''}"data-v="${v}">★</span>`).join('')}</div>
+    </div>`;
+
+  const pmStars = Array.from(body.querySelectorAll('.pm-star'));
+  pmStars.forEach((s, i) => {
+    s.addEventListener('mouseenter', () => pmStars.forEach((x,j) => x.classList.toggle('lit', j<=i)));
+    s.addEventListener('mouseleave', () => pmStars.forEach((x,j) => x.classList.toggle('lit', j<(ratings[key]||0))));
+    s.addEventListener('click', () => {
+      ratings[key] = i + 1;
+      try { localStorage.setItem('ek-ratings', JSON.stringify(ratings)); } catch(e) {}
+      pmStars.forEach((x,j) => x.classList.toggle('lit', j<=i));
+      document.querySelectorAll(`[data-project="${key}"] .star`).forEach((x,j) => x.classList.toggle('lit', j<=i));
+    });
+  });
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProject() {
+  document.getElementById('projectModal')?.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+window.openProject  = openProject;
+window.closeProject = closeProject;
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProject(); });
+
+/* ══ 9. SCROLL REVEAL ══════════════════════════════════════════ */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    revealObs.unobserve(entry.target);
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => revealObs.observe(el));
+
+// Skill bars
+const skillBarObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('.sk-fill').forEach(el => el.classList.add('go'));
+    entry.target.querySelectorAll('.rb-fill').forEach(el => el.classList.add('go'));
+    skillBarObs.unobserve(entry.target);
+  });
+}, { threshold: 0.25 });
+document.querySelectorAll('#skills, #testimonials').forEach(s => skillBarObs.observe(s));
+
+/* ══ 10. COUNTER — fires when about section enters view ═════════ */
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('[data-count]').forEach(el => {
+      animCount(el, parseInt(el.dataset.count, 10), 1400);
+    });
+    counterObs.unobserve(entry.target);
+  });
+}, { threshold: 0.3 });
+const aboutSec = document.getElementById('about');
+if (aboutSec) counterObs.observe(aboutSec);
+
+/* ══ 11. ANIMATED COUNTER ═══════════════════════════════════════ */
+function animCount(el, target, duration) {
+  if (!el) return;
+  const start = performance.now();
+  const step = now => {
+    const p = Math.min((now - start) / duration, 1);
+    el.textContent = Math.floor((1 - Math.pow(1-p, 3)) * target);
+    if (p < 1) requestAnimationFrame(step);
     else el.textContent = target;
   };
   requestAnimationFrame(step);
 }
 
-const cntObs = new IntersectionObserver(
-  entries => entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animCount(entry.target, Number(entry.target.dataset.count));
-      cntObs.unobserve(entry.target);
-    }
-  }),
-  { threshold: 0.6 }
-);
-document.querySelectorAll('[data-count]').forEach(el => cntObs.observe(el));
-
-/* ══════════════════════════════════════════════════════════════
-   9. CONTACT FORM — EmailJS → elvartonkadwala@gmail.com
-   ══════════════════════════════════════════════════════════════
-   Setup steps (free):
-   1. Sign up at https://www.emailjs.com
-   2. Add Gmail service → get YOUR_SERVICE_ID
-   3. Create email template → get YOUR_TEMPLATE_ID
-      Template variables: {{from_name}}, {{reply_to}}, {{subject}}, {{message}}
-   4. Copy your Public Key → replace YOUR_PUBLIC_KEY in the <script> in <head>
-   ══════════════════════════════════════════════════════════════ */
-const cForm = document.getElementById('cForm');
-if (cForm) {
-  cForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const btn    = document.getElementById('fBtn');
-    const status = document.getElementById('fStatus');
-
-    // Basic validation
-    const name  = document.getElementById('fName').value.trim();
-    const email = document.getElementById('fEmail').value.trim();
-    const msg   = document.getElementById('fMsg').value.trim();
-    if (!name || !email || !msg) {
-      status.textContent = '✗ Please fill in all required fields.';
-      status.className   = 'fstatus err';
-      return;
-    }
-
-    btn.disabled     = true;
-    btn.textContent  = 'Sending…';
-    status.textContent = '';
-    status.className   = 'fstatus';
-
-    // EmailJS send
-    // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your real IDs
-    emailjs.sendForm('service_7w40u1f', 'template_200d822', cForm)
-      .then(() => {
-        cForm.reset();
-        btn.disabled    = false;
-        btn.textContent = 'Send Message ↗';
-        status.textContent = "✓ Message sent! I'll get back to you soon.";
-        status.className   = 'fstatus ok';
-        setTimeout(() => { status.textContent = ''; status.className = 'fstatus'; }, 6000);
-      })
-      .catch((err) => {
-        console.error('EmailJS error:', err);
-        btn.disabled    = false;
-        btn.textContent = 'Send Message ↗';
-        status.textContent = '✗ Something went wrong. Try emailing directly.';
-        status.className   = 'fstatus err';
-      });
+/* ══ 12. HERO PARALLAX ══════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+  const y = window.scrollY;
+  hero.querySelectorAll('.orb').forEach((orb, i) => {
+    orb.style.transform = `translateY(${y * (0.06 + i * 0.03)}px)`;
   });
-}
+}, { passive: true });
 
-/* ══════════════════════════════════════════════════════════════
-   10. PORTFOLIO GALLERY — filter + lightbox
-   ══════════════════════════════════════════════════════════════ */
+/* ══ 13. GALLERY FILTER ═════════════════════════════════════════ */
 (function () {
-  const filterBtns = document.querySelectorAll('.gal-btn');
-  const galItems   = document.querySelectorAll('.gal-item');
-
-  filterBtns.forEach(btn => {
+  const btns = document.querySelectorAll('.gal-btn');
+  const items = document.querySelectorAll('.gal-item');
+  if (!btns.length) return;
+  btns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-      filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      btns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      galItems.forEach(item => {
-        const match = filter === 'all' || item.dataset.cat === filter;
-        if (match) {
-          item.classList.remove('hidden');
-          item.style.animation = 'galIn .4s cubic-bezier(.23,1,.32,1) both';
-        } else {
-          item.classList.add('hidden');
-        }
-      });
+      const f = btn.dataset.filter;
+      items.forEach(item => item.classList.toggle('hidden', f !== 'all' && item.dataset.cat !== f));
     });
-  });
-
-  const ks = document.createElement('style');
-  ks.textContent = '@keyframes galIn{from{opacity:0;transform:scale(.94) translateY(12px);}to{opacity:1;transform:none;}}';
-  document.head.appendChild(ks);
-
-  // Lightbox
-  const lightbox   = document.getElementById('lightbox');
-  const backdrop   = document.getElementById('lbBackdrop');
-  const lbImg      = document.getElementById('lbImg');
-  const lbPH       = document.getElementById('lbPlaceholder');
-  const lbCat      = document.getElementById('lbCat');
-  const lbTitle    = document.getElementById('lbTitle');
-  const lbDesc     = document.getElementById('lbDesc');
-  const lbClose    = document.getElementById('lbClose');
-  const lbPrev     = document.getElementById('lbPrev');
-  const lbNext     = document.getElementById('lbNext');
-
-  let visibleItems = [];
-  let currentIndex = 0;
-
-  function getVisible() {
-    return Array.from(galItems).filter(el => !el.classList.contains('hidden'));
-  }
-
-  function openLightbox(itemEl) {
-    visibleItems = getVisible();
-    currentIndex = visibleItems.indexOf(itemEl);
-    renderLightbox(currentIndex);
-    lightbox.classList.add('open');
-    backdrop.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    lbClose.focus();
-  }
-
-  function renderLightbox(i) {
-    const item    = visibleItems[i];
-    const zoomBtn = item.querySelector('.gal-zoom');
-    lbCat.textContent   = zoomBtn.dataset.cat;
-    lbTitle.textContent = zoomBtn.dataset.title;
-    lbDesc.textContent  = zoomBtn.dataset.desc;
-    lbPH.textContent    = zoomBtn.dataset.title;
-    lbImg.style.opacity = '0';
-    lbImg.src = zoomBtn.dataset.src;
-    lbImg.onload  = () => { lbImg.style.opacity = '1'; lbPH.style.display = 'none'; };
-    lbImg.onerror = () => { lbImg.style.display = 'none'; lbPH.style.display = 'flex'; };
-    lbPrev.style.visibility = i === 0                       ? 'hidden' : 'visible';
-    lbNext.style.visibility = i === visibleItems.length - 1 ? 'hidden' : 'visible';
-  }
-
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    backdrop.classList.remove('open');
-    document.body.style.overflow = '';
-    lbImg.src = '';
-  }
-
-  document.querySelectorAll('.gal-zoom').forEach(btn => {
-    btn.addEventListener('click', () => openLightbox(btn.closest('.gal-item')));
-  });
-  document.querySelectorAll('.gal-img-wrap img').forEach(img => {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', () => openLightbox(img.closest('.gal-item')));
-  });
-
-  lbClose.addEventListener('click', closeLightbox);
-  backdrop.addEventListener('click', closeLightbox);
-  lbPrev.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; renderLightbox(currentIndex); } });
-  lbNext.addEventListener('click', () => { if (currentIndex < visibleItems.length - 1) { currentIndex++; renderLightbox(currentIndex); } });
-
-  document.addEventListener('keydown', e => {
-    if (!lightbox.classList.contains('open')) return;
-    if (e.key === 'Escape')     closeLightbox();
-    if (e.key === 'ArrowLeft')  { if (currentIndex > 0) { currentIndex--; renderLightbox(currentIndex); } }
-    if (e.key === 'ArrowRight') { if (currentIndex < visibleItems.length - 1) { currentIndex++; renderLightbox(currentIndex); } }
   });
 })();
 
-/* ══════════════════════════════════════════════════════════════
-   11. FOOTER — current year
-   ══════════════════════════════════════════════════════════════ */
-const yearEl = document.getElementById('yr');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-/* ══════════════════════════════════════════════════════════════
-   12. MOUSE FOLLOW + GLOW EFFECTS
-   ══════════════════════════════════════════════════════════════ */
+/* ══ 14. CONTACT FORM ═══════════════════════════════════════════ */
 (function () {
-
-  /* ── 1. Custom cursor ── */
-  const cursor     = document.createElement('div');
-  const cursorDot  = document.createElement('div');
-  cursor.id        = 'cursor-ring';
-  cursorDot.id     = 'cursor-dot';
-  document.body.appendChild(cursor);
-  document.body.appendChild(cursorDot);
-
-  let mx = -200, my = -200;   // mouse
-  let cx = -200, cy = -200;   // ring (lerped)
-  let visible = false;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    if (!visible) {
-      visible = true;
-      cursor.style.opacity    = '1';
-      cursorDot.style.opacity = '1';
+  const form   = document.getElementById('cForm');
+  const btn    = document.getElementById('fBtn');
+  const status = document.getElementById('fStatus');
+  if (!form) return;
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name  = document.getElementById('fName')?.value.trim();
+    const email = document.getElementById('fEmail')?.value.trim();
+    const msg   = document.getElementById('fMsg')?.value.trim();
+    if (!name || !email || !msg) {
+      status.textContent = 'Please fill in all required fields.';
+      status.className = 'fstatus err'; return;
     }
-    // Dot snaps instantly
-    cursorDot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
-  });
-
-  document.addEventListener('mouseleave', () => {
-    cursor.style.opacity    = '0';
-    cursorDot.style.opacity = '0';
-    visible = false;
-  });
-
-  // Smooth ring follow via rAF lerp
-  function animCursor() {
-    cx += (mx - cx) * 0.12;
-    cy += (my - cy) * 0.12;
-    cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
-    requestAnimationFrame(animCursor);
-  }
-  animCursor();
-
-  // Hover states — enlarge ring on interactive elements
-  const hoverTargets = 'a, button, .ltile, .gal-item, .proj, .carousel-slide, .car-dot, .si, .foot-icon, input, textarea';
-  document.addEventListener('mouseover', e => {
-    if (e.target.closest(hoverTargets)) {
-      cursor.classList.add('cursor-hover');
-      cursorDot.classList.add('cursor-hover');
+    btn.disabled = true;
+    const t = btn.querySelector('.gf-btn-text');
+    if (t) t.textContent = 'Sending…';
+    status.textContent = '';
+    try {
+      await emailjs.sendForm('service_ekportfolio', 'template_ekcontact', form);
+      status.textContent = '✓ Message sent! I\'ll reply within 24 hours.';
+      status.className = 'fstatus ok'; form.reset();
+    } catch {
+      status.textContent = 'Failed to send. Please email directly.';
+      status.className = 'fstatus err';
+    } finally {
+      btn.disabled = false;
+      if (t) t.textContent = 'Send Message';
     }
   });
-  document.addEventListener('mouseout', e => {
-    if (e.target.closest(hoverTargets)) {
-      cursor.classList.remove('cursor-hover');
-      cursorDot.classList.remove('cursor-hover');
-    }
-  });
-
-  /* ── 2. Global spotlight glow that follows mouse ── */
-  const spotlight = document.createElement('div');
-  spotlight.id = 'mouse-spotlight';
-  document.body.appendChild(spotlight);
-
-  document.addEventListener('mousemove', e => {
-    spotlight.style.left = e.clientX + 'px';
-    spotlight.style.top  = e.clientY + 'px';
-  });
-
-  /* ── 3. Per-card magnetic glow on hover ── */
-  const glowTargets = document.querySelectorAll(
-    '.ltile, .proj, .gal-item, .exp-side-card, .exp-item, .si, .foot-icon, .clink'
-  );
-
-  glowTargets.forEach(el => {
-    el.addEventListener('mousemove', e => {
-      const r  = el.getBoundingClientRect();
-      const x  = ((e.clientX - r.left) / r.width)  * 100;
-      const y  = ((e.clientY - r.top)  / r.height) * 100;
-      el.style.setProperty('--gx', x + '%');
-      el.style.setProperty('--gy', y + '%');
-      el.classList.add('glow-active');
-    });
-    el.addEventListener('mouseleave', () => {
-      el.classList.remove('glow-active');
-    });
-  });
-
-  /* ── 4. Magnetic pull on social icons ── */
-  document.querySelectorAll('.si, .foot-icon').forEach(el => {
-    el.addEventListener('mousemove', e => {
-      const r  = el.getBoundingClientRect();
-      const dx = (e.clientX - (r.left + r.width  / 2)) * 0.35;
-      const dy = (e.clientY - (r.top  + r.height / 2)) * 0.35;
-      el.style.transform = `translate(${dx}px, ${dy}px) scale(1.12)`;
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = '';
-    });
-  });
-
 })();
 
-/* ══════════════════════════════════════════════════════════════
-   13. WORK CAROUSEL — dots only, auto-advance, swipe support
-   ══════════════════════════════════════════════════════════════ */
-(function () {
-  const track    = document.getElementById('wcarTrack');
-  const dotsWrap = document.getElementById('wcarDots');
-  if (!track || !dotsWrap) return;
-
-  const cards = Array.from(track.querySelectorAll('.wcar-card'));
-  const total = cards.length;
-  let current = 0, autoTimer = null;
-
-  // Build dots
-  cards.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'wcar-dot' + (i === 0 ? ' active' : '');
-    d.setAttribute('aria-label', `Slide ${i + 1}`);
-    d.addEventListener('click', () => { goTo(i); resetAuto(); });
-    dotsWrap.appendChild(d);
-  });
-
-  function goTo(n) {
-    current = (n + total) % total;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    dotsWrap.querySelectorAll('.wcar-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === current);
-    });
-  }
-
-  function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 4500); }
-  function resetAuto()  { clearInterval(autoTimer); startAuto(); }
-  startAuto();
-
-  // Swipe support
-  let startX = 0;
-  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend',   e => {
-    const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 48) { goTo(dx < 0 ? current + 1 : current - 1); resetAuto(); }
-  });
-
-  // Mouse drag
-  let dragStart = 0, dragging = false;
-  track.addEventListener('mousedown', e => { dragging = true; dragStart = e.clientX; });
-  window.addEventListener('mouseup',  e => {
-    if (!dragging) return; dragging = false;
-    const dx = e.clientX - dragStart;
-    if (Math.abs(dx) > 48) { goTo(dx < 0 ? current + 1 : current - 1); resetAuto(); }
-  });
-
-  // Keyboard
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft')  { goTo(current - 1); resetAuto(); }
-    if (e.key === 'ArrowRight') { goTo(current + 1); resetAuto(); }
-  });
-})();
+/* ══ 15. FOOTER YEAR ════════════════════════════════════════════ */
+const yrEl = document.getElementById('yr');
+if (yrEl) yrEl.textContent = new Date().getFullYear();
