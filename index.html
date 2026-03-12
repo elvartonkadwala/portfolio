@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Elvarton Kadwala — Graphic Designer based in Blantyre, Malawi." />
+  <title>Elvarton Kadwala — Graphic Designer</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f0e0c'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='serif' font-size='18' font-weight='700' fill='white'%3EEK%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>(function(){ if(typeof emailjs !== 'undefined') emailjs.init({ publicKey: 'qDPANAa2__TIHugj4' }); })();</script>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- ══ LOADER ══════════════════════════════════════════════ -->
+<div id="loader">
+  <div class="l-spinner"></div>
+  <div class="l-name">Elvarton</div>
+</div>
+
+<!-- ══ FAB ═════════════════════════════════════════════════ -->
+<button class="fab" id="fab" aria-label="Quick contact">
+  <i class="fa-solid fa-paper-plane"></i>
+  <span>Let's Talk</span>
+</button>
+
+<!-- ══ NAV ═════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="#hero" aria-label="Home"><span class="nav-logo-mark">EK</span></a>
+  <div class="nav-links">
+    <a href="#work"    class="nav-link">Work</a>
+    <a href="#logos"   class="nav-link">Logos</a>
+    <a href="#gallery" class="nav-link">Gallery</a>
+    <a href="#about"   class="nav-link">About</a>
+    <a href="#contact" class="nav-cta">Contact ↗</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span class="hb-bar"></span>
+    <span class="hb-bar"></span>
+    <span class="hb-bar"></span>
+  </button>
+</nav>
+
+<!-- ══ MOBILE MENU ════════════════════════════════════════ -->
+<div class="mob-menu" id="mobMenu" aria-hidden="true">
+  <div class="mob-links">
+    <a href="#work"    class="mob-link">Work    <span class="mob-link-arrow">→</span></a>
+    <a href="#logos"   class="mob-link">Logos   <span class="mob-link-arrow">→</span></a>
+    <a href="#gallery" class="mob-link">Gallery <span class="mob-link-arrow">→</span></a>
+    <a href="#about"   class="mob-link">About   <span class="mob-link-arrow">→</span></a>
+    <a href="#contact" class="mob-link mob-cta">Contact ↗ <span class="mob-link-arrow"></span></a>
+  </div>
+  <div class="mob-footer">
+    <div>Blantyre, Malawi</div>
+    <div class="mob-socials">
+      <a href="https://www.instagram.com/elvarton" target="_blank" rel="noopener" class="mob-social"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/265892048014"          target="_blank" rel="noopener" class="mob-social"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="mailto:elvarton@example.com"          class="mob-social"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div><div class="orb orb-2"></div>
+    <div class="orb orb-3"></div><div class="orb orb-4"></div><div class="orb orb-5"></div>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-profile-row">
+        <div class="hero-photo-wrap">
+          <img src="assets/profiles/elvarton_profile.png" alt="Elvarton Kadwala"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="hero-photo-initials" style="display:none;">EK</div>
+        </div>
+        <div>
+          <div class="hero-photo-name">Elvarton Kadwala</div>
+          <div class="hero-photo-role">Graphic Designer · Blantyre, Malawi</div>
+        </div>
+      </div>
+      <div class="hero-greeting">
+        <span class="hero-greeting-dot"></span>
+        <span class="hero-greeting-text" id="heroGreeting"></span>
+      </div>
+      <div class="hero-tag"><span class="tag-dot"></span>Available for projects</div>
+      <h1>Design<br>that <em>speaks</em><br>volumes.</h1>
+      <p class="hero-p">Crafting visual identities and creative digital experiences that cut through the noise — from Blantyre to everywhere.</p>
+      <div class="hero-btns">
+        <a href="#work"    class="btn btn-dark">View Work →</a>
+        <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+      </div>
+    </div>
+    <div class="hero-card-wrap">
+      <div class="hero-card">
+        <div class="card-glow"></div>
+        <div class="card-lbl">Creative Output · 2025</div>
+        <div class="card-big" id="heroNum">0</div>
+        <div class="card-sub">Projects delivered</div>
+        <div class="mini-bars">
+          <div class="mbar-row"><span class="mbar-lbl">Logo Design</span><div class="mbar-track"><div class="mbar-fill" style="--w:95%"></div></div></div>
+          <div class="mbar-row"><span class="mbar-lbl">Branding</span>   <div class="mbar-track"><div class="mbar-fill" style="--w:90%"></div></div></div>
+          <div class="mbar-row"><span class="mbar-lbl">Motion</span>     <div class="mbar-track"><div class="mbar-fill" style="--w:80%"></div></div></div>
+        </div>
+        <div class="badges">
+          <span class="badge">Illustrator</span><span class="badge">Photoshop</span>
+          <span class="badge">After Effects</span><span class="badge">Canva</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TICKER ══════════════════════════════════════════════ -->
+<div class="ticker"><div class="ticker-inner" id="tickerEl"></div></div>
+
+<!-- ══ RECENT WORK — SCROLL-DRIVEN SLIDER ════════════════ -->
+<section id="work" class="work-section">
+  <div class="s-inner" style="padding-bottom:0">
+    <div class="s-lbl rv">Selected Work</div>
+    <h2 class="rv">Recent <em>projects</em></h2>
+    <p class="section-sub rv">Scroll through each project — or swipe on mobile.</p>
+  </div>
+
+  <div class="proj-scroll-root" id="projScrollRoot">
+    <div class="proj-scroll-sticky" id="projScrollSticky">
+
+      <!-- Header: counter + arrows (arrows hidden on mobile via CSS) -->
+      <div class="proj-header-row">
+        <div class="proj-header-left"></div>
+        <div class="proj-header-right">
+          <div class="proj-counter">
+            <span class="pc-cur" id="pcCur">01</span>
+            <span style="color:var(--ink3);margin:0 2px;">/</span>
+            <span id="pcTotal" style="color:var(--ink3);">04</span>
+          </div>
+          <button class="sn-btn" id="sliderPrev" aria-label="Previous project">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M9 3L4 8l5 5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="sn-btn" id="sliderNext" aria-label="Next project">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M7 3l5 5-5 5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track -->
+      <div class="proj-track-wrap">
+        <div class="proj-track" id="projTrack">
+
+          <!-- Card 1 -->
+          <div class="proj-card">
+            <div class="proj-card-img">
+              <div class="proj-card-bg" style="background:linear-gradient(135deg,#1a1a18,#2e2c28)">
+                <img src="https://res.cloudinary.com/demo/image/upload/w_800,h_500,c_fill,g_auto/sample.jpg"
+                     onerror="this.style.display='none'" alt="" loading="lazy"
+                     style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="proj-card-img-ph">Brand Identity</div>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-cat">Brand Identity</span><span class="proj-year">· 2024</span></div>
+              <h3>Brand Identity System</h3>
+              <p>Complete visual identity for a local Malawian retail business — from strategy to brand guidelines.</p>
+              <div class="proj-stats">
+                <span><strong>100+</strong> Assets</span>
+                <span><strong>6</strong> Weeks</span>
+                <span><strong>3×</strong> Engagement</span>
+              </div>
+              <button class="proj-cta" onclick="openProject('brand-identity')">View Case Study →</button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="proj-card">
+            <div class="proj-card-img">
+              <div class="proj-card-bg" style="background:linear-gradient(135deg,#0c0c0a,#1a1a18)">
+                <img src="https://res.cloudinary.com/demo/image/upload/w_800,h_500,c_fill,g_auto/cld-sample-2.jpg"
+                     onerror="this.style.display='none'" alt="" loading="lazy"
+                     style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="proj-card-img-ph">Motion Graphics</div>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-cat">Motion Graphics</span><span class="proj-year">· 2023</span></div>
+              <h3>Promotional Motion Package</h3>
+              <p>Animated intro, lower-thirds and full promo video for a business launch in Blantyre.</p>
+              <div class="proj-stats">
+                <span><strong>5</strong> Videos</span>
+                <span><strong>30s</strong> Hero</span>
+                <span><strong>10K+</strong> Views</span>
+              </div>
+              <button class="proj-cta" onclick="openProject('motion-graphics')">View Case Study →</button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="proj-card">
+            <div class="proj-card-img">
+              <div class="proj-card-bg" style="background:linear-gradient(135deg,#0a1a10,#123020)">
+                <img src="https://res.cloudinary.com/demo/image/upload/w_800,h_500,c_fill,g_auto/cld-sample-3.jpg"
+                     onerror="this.style.display='none'" alt="" loading="lazy"
+                     style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="proj-card-img-ph">Social Media</div>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-cat">Social Media</span><span class="proj-year">· 2024</span></div>
+              <h3>Social Media Content Pack</h3>
+              <p>40+ Instagram & Facebook templates for a Malawian fashion brand — posts, stories, reels covers.</p>
+              <div class="proj-stats">
+                <span><strong>40+</strong> Templates</span>
+                <span><strong>2×</strong> Followers</span>
+                <span><strong>↑68%</strong> Engagement</span>
+              </div>
+              <button class="proj-cta" onclick="openProject('social-media')">View Case Study →</button>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="proj-card">
+            <div class="proj-card-img">
+              <div class="proj-card-bg" style="background:linear-gradient(135deg,#0d1520,#1a2d40)">
+                <img src="https://res.cloudinary.com/demo/image/upload/w_800,h_500,c_fill,g_auto/cld-sample-4.jpg"
+                     onerror="this.style.display='none'" alt="" loading="lazy"
+                     style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="proj-card-img-ph">Logo Design</div>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-cat">Logo Design</span><span class="proj-year">· 2024</span></div>
+              <h3>4NBuy E-Commerce Brand</h3>
+              <p>Modern logo and visual mark for a growing Malawian e-commerce platform — bold, clean, built to scale.</p>
+              <div class="proj-stats">
+                <span><strong>12</strong> Variations</span>
+                <span><strong>2</strong> Weeks</span>
+                <span><strong>5★</strong> Rating</span>
+              </div>
+              <button class="proj-cta" onclick="openProject('logo-design')">View Case Study →</button>
+            </div>
+          </div>
+
+        </div><!-- /proj-track -->
+      </div><!-- /proj-track-wrap -->
+
+      <!-- Progress segments -->
+      <div class="proj-progress">
+        <div class="pp-seg"><div class="pp-seg-fill"></div></div>
+        <div class="pp-seg"><div class="pp-seg-fill"></div></div>
+        <div class="pp-seg"><div class="pp-seg-fill"></div></div>
+        <div class="pp-seg"><div class="pp-seg-fill"></div></div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="proj-scroll-hint" id="projScrollHint">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M7 12l-3-3M7 12l3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Scroll to advance
+      </div>
+
+    </div><!-- /proj-scroll-sticky -->
+  </div><!-- /proj-scroll-root -->
+</section>
+
+<!-- ══ PROJECT MODAL ══════════════════════════════════════ -->
+<div class="proj-modal" id="projectModal" role="dialog" aria-modal="true">
+  <div class="proj-modal-bg" onclick="closeProject()"></div>
+  <div class="proj-modal-panel">
+    <button class="proj-close" onclick="closeProject()" aria-label="Close">✕</button>
+    <div class="proj-modal-body" id="projBody"></div>
+  </div>
+</div>
+
+<!-- ══ LOGOS ═══════════════════════════════════════════════ -->
+<section id="logos" class="logos-section">
+  <div class="s-inner">
+    <div class="logos-header rv">
+      <div>
+        <div class="s-lbl">Logo Work</div>
+        <h2>Marks that <em>last</em></h2>
+      </div>
+      <p class="logos-sub">Each logo is built on strategy — researched, refined, and ready to scale across every touchpoint.</p>
+    </div>
+    <div class="logo-tiles rv">
+
+      <div class="ltile"><div class="ltile-inner">
+        <svg viewBox="0 0 120 120" fill="none">
+          <circle cx="60" cy="60" r="42" stroke="white" stroke-width="2"/>
+          <circle cx="60" cy="60" r="28" fill="white" opacity=".06"/>
+          <text x="60" y="67" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="700" fill="white">4N</text>
+          <text x="60" y="108" text-anchor="middle" font-family="sans-serif" font-size="7" fill="white" opacity=".3" letter-spacing="3">BUY</text>
+        </svg>
+        <div class="ltile-name">4NBuy</div><div class="ltile-cat">E-Commerce</div>
+      </div></div>
+
+      <div class="ltile"><div class="ltile-inner">
+        <svg viewBox="0 0 180 80" fill="none">
+          <rect x="10" y="20" width="40" height="40" fill="white"/>
+          <rect x="58" y="20" width="40" height="40" fill="white" opacity=".3"/>
+          <text x="110" y="50" font-family="sans-serif" font-size="18" font-weight="700" fill="white" letter-spacing="-1">Radius</text>
+          <text x="110" y="64" font-family="sans-serif" font-size="8" fill="white" opacity=".3" letter-spacing="3">CO.</text>
+        </svg>
+        <div class="ltile-name">Radius Co.</div><div class="ltile-cat">Technology</div>
+      </div></div>
+
+      <div class="ltile"><div class="ltile-inner">
+        <svg viewBox="0 0 100 100" fill="none">
+          <polygon points="50,8 92,76 8,76" stroke="white" stroke-width="2" fill="none"/>
+          <polygon points="50,26 74,70 26,70" stroke="white" stroke-width="1" fill="none" opacity=".35"/>
+          <circle cx="50" cy="54" r="6" fill="white"/>
+        </svg>
+        <div class="ltile-name">Apex Studio</div><div class="ltile-cat">Agency</div>
+      </div></div>
+
+      <div class="ltile"><div class="ltile-inner">
+        <svg viewBox="0 0 100 100" fill="none">
+          <rect x="16" y="16" width="30" height="30" stroke="white" stroke-width="2"/>
+          <rect x="54" y="16" width="30" height="30" fill="white"/>
+          <rect x="16" y="54" width="30" height="30" fill="white" opacity=".3"/>
+          <rect x="54" y="54" width="30" height="30" stroke="white" stroke-width="2"/>
+        </svg>
+        <div class="ltile-name">Forma Group</div><div class="ltile-cat">Architecture</div>
+      </div></div>
+
+      <div class="ltile"><div class="ltile-inner">
+        <svg viewBox="0 0 180 70" fill="none">
+          <text x="10" y="55" font-family="Georgia,serif" font-size="52" font-weight="700" fill="white" letter-spacing="-4">EK</text>
+          <line x1="84" y1="6" x2="84" y2="64" stroke="white" stroke-width="1" opacity=".2"/>
+          <text x="94" y="34" font-family="sans-serif" font-size="12" fill="white" opacity=".7" letter-spacing="4">STUDIO</text>
+          <text x="94" y="50" font-family="sans-serif" font-size="8" fill="white" opacity=".3" letter-spacing="2">BLANTYRE · MW</text>
+        </svg>
+        <div class="ltile-name">EK Studio</div><div class="ltile-cat">Personal Brand</div>
+      </div></div>
+
+      <div class="ltile"><div class="ltile-inner">
+        <svg viewBox="0 0 180 80" fill="none">
+          <path d="M20 40 Q60 10 100 40 Q140 70 160 40" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <text x="90" y="72" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white" opacity=".4" letter-spacing="5">VENN MEDIA</text>
+        </svg>
+        <div class="ltile-name">Venn Media</div><div class="ltile-cat">Media &amp; PR</div>
+      </div></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY — BENTO ════════════════════════════════════ -->
+<section id="gallery">
+  <div class="s-inner">
+    <div class="gal-top rv">
+      <div>
+        <div class="s-lbl">Gallery</div>
+        <h2>Creative <em>showcase</em></h2>
+      </div>
+      <div class="gal-filters">
+        <button class="gal-btn active" data-filter="all">All</button>
+        <button class="gal-btn" data-filter="logo">Logo</button>
+        <button class="gal-btn" data-filter="brand">Brand</button>
+        <button class="gal-btn" data-filter="social">Social</button>
+        <button class="gal-btn" data-filter="motion">Motion</button>
+        <button class="gal-btn" data-filter="poster">Poster</button>
+      </div>
+    </div>
+
+    <div class="gal-bento rv" id="galGrid">
+
+      <div class="gal-item" data-cat="logo">
+        <div class="gal-img-wrap">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_600,h_900,c_fill,g_auto/sample.jpg" onerror="this.style.display='none'" alt="" loading="lazy"/>
+          <div class="gal-placeholder" style="--c1:#1a1a18;--c2:#3a3830"><span class="gp-label">Logo</span></div>
+          <span class="gal-tag-pill">Logo Design</span>
+          <div class="gal-overlay"><div class="gal-info"><span class="gal-cat-label">Logo Design</span><div class="gal-title">Minimalist Brand Mark</div></div></div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-cat="brand">
+        <div class="gal-img-wrap">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_600,h_400,c_fill,g_auto/cld-sample-2.jpg" onerror="this.style.display='none'" alt="" loading="lazy"/>
+          <div class="gal-placeholder" style="--c1:#0d1520;--c2:#1a2d40"><span class="gp-label">Brand</span></div>
+          <span class="gal-tag-pill">Brand Identity</span>
+          <div class="gal-overlay"><div class="gal-info"><span class="gal-cat-label">Brand Identity</span><div class="gal-title">Full Brand System</div></div></div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-cat="poster">
+        <div class="gal-img-wrap">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_600,h_600,c_fill,g_auto/cld-sample-3.jpg" onerror="this.style.display='none'" alt="" loading="lazy"/>
+          <div class="gal-placeholder" style="--c1:#1e0a0a;--c2:#3d1212"><span class="gp-label">Poster</span></div>
+          <span class="gal-tag-pill">Poster</span>
+          <div class="gal-overlay"><div class="gal-info"><span class="gal-cat-label">Poster Design</span><div class="gal-title">Event Poster</div></div></div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-cat="social">
+        <div class="gal-img-wrap">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_900,h_600,c_fill,g_auto/cld-sample-4.jpg" onerror="this.style.display='none'" alt="" loading="lazy"/>
+          <div class="gal-placeholder" style="--c1:#0a1a10;--c2:#123020"><span class="gp-label">Social Media</span></div>
+          <span class="gal-tag-pill">Social Media</span>
+          <div class="gal-overlay"><div class="gal-info"><span class="gal-cat-label">Social Media</span><div class="gal-title">Instagram Template Pack</div></div></div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-cat="motion">
+        <div class="gal-img-wrap">
+          <div class="gal-placeholder" style="--c1:#0c0c0a;--c2:#1a1a18"><span class="gp-label">Motion</span></div>
+          <span class="gal-tag-pill">Motion</span>
+          <div class="gal-overlay"><div class="gal-info"><span class="gal-cat-label">Motion Graphics</span><div class="gal-title">Brand Animation Intro</div></div></div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-cat="brand">
+        <div class="gal-img-wrap">
+          <div class="gal-placeholder" style="--c1:#12090e;--c2:#2a1020"><span class="gp-label">Brand</span></div>
+          <span class="gal-tag-pill">Brand Identity</span>
+          <div class="gal-overlay"><div class="gal-info"><span class="gal-cat-label">Brand Identity</span><div class="gal-title">Fashion Brand Identity</div></div></div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-cat="poster">
+        <div class="gal-img-wrap">
+          <div class="gal-placeholder" style="--c1:#0a0f1a;--c2:#141e33"><span class="gp-label">Poster</span></div>
+          <span class="gal-tag-pill">Poster</span>
+          <div class="gal-overlay"><div class="gal-info"><span class="gal-cat-label">Poster Design</span><div class="gal-title">Product Launch Flyer</div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT — BENTO ══════════════════════════════════════ -->
+<section id="about">
+  <div class="s-inner">
+    <div class="s-lbl rv">About Me</div>
+    <h2 class="rv">Craft <em>first,</em> always.</h2>
+
+    <div class="about-bento rv">
+
+      <!-- Photo -->
+      <div class="ab-card ab-photo">
+        <img src="assets/profiles/elvarton_profile.png" alt="Elvarton Kadwala" class="ab-photo-img"
+             onerror="this.style.display='none'" />
+        <div class="ab-photo-initials">EK</div>
+        <div class="ab-photo-badge">
+          <div class="ab-badge-dot"></div>
+          <div>
+            <div class="ab-badge-text">Blantyre, Malawi</div>
+            <div class="ab-badge-sub">Open to remote work</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Intro text -->
+      <div class="ab-card ab-intro">
+        <div class="ab-intro-quote">"Design is not just how it looks — it's how it communicates and what it makes people feel."</div>
+        <p>I'm a graphic designer based in Blantyre, Malawi with over <strong>4 years of experience</strong> creating impactful visual designs. My work spans branding, logo design, motion, and digital content.</p>
+        <p>I combine creativity with modern tools to deliver compelling visual identities — for businesses across Malawi and beyond.</p>
+        <div class="ab-intro-tags">
+          <span class="ab-intro-tag">Illustrator</span>
+          <span class="ab-intro-tag">Photoshop</span>
+          <span class="ab-intro-tag">After Effects</span>
+          <span class="ab-intro-tag">Premiere</span>
+          <span class="ab-intro-tag">InDesign</span>
+          <span class="ab-intro-tag">Canva</span>
+          <span class="ab-intro-tag">Figma</span>
+          <span class="ab-intro-tag">CapCut</span>
+        </div>
+      </div>
+
+      <!-- Stat: Projects -->
+      <div class="ab-card ab-stat-card ab-stat-1">
+        <div class="ab-stat-n"><span data-count="85">0</span><sup>+</sup></div>
+        <div class="ab-stat-l">Projects Delivered</div>
+      </div>
+
+      <!-- Stat: Clients -->
+      <div class="ab-card ab-stat-card ab-stat-2">
+        <div class="ab-stat-n"><span data-count="35">0</span><sup>+</sup></div>
+        <div class="ab-stat-l">Happy Clients</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ══════════════════════════════════════════════ -->
+<section id="skills">
+  <div class="s-inner">
+    <div class="s-lbl rv">Skills</div>
+    <h2 class="rv">Tools of <em>the trade</em></h2>
+    <div class="skills-grid">
+      <div class="rv">
+        <div class="sg-title">Design &amp; Branding</div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-pen-nib"></i> Adobe Illustrator</span><span class="sk-pct">95%</span></div><div class="sk-track"><div class="sk-fill" style="--w:95%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-image"></i> Adobe Photoshop</span><span class="sk-pct">90%</span></div><div class="sk-track"><div class="sk-fill" style="--w:90%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-newspaper"></i> Adobe InDesign</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-fill" style="--w:85%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-brands fa-figma"></i> Figma</span><span class="sk-pct">80%</span></div><div class="sk-track"><div class="sk-fill" style="--w:80%"></div></div></div>
+      </div>
+      <div class="rv d2">
+        <div class="sg-title">Production &amp; Motion</div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-film"></i> After Effects</span><span class="sk-pct">82%</span></div><div class="sk-track"><div class="sk-fill" style="--w:82%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-clapperboard"></i> Premiere Pro</span><span class="sk-pct">78%</span></div><div class="sk-track"><div class="sk-fill" style="--w:78%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-palette"></i> Canva</span><span class="sk-pct">98%</span></div><div class="sk-track"><div class="sk-fill" style="--w:98%"></div></div></div>
+        <div class="sk"><div class="sk-meta"><span class="sk-name"><i class="sk-fa fa-solid fa-scissors"></i> CapCut</span><span class="sk-pct">92%</span></div><div class="sk-track"><div class="sk-fill" style="--w:92%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══════════════════════════════════════════════ -->
+<section id="contact" class="contact-section">
+  <div class="contact-orbs" aria-hidden="true">
+    <div class="co co-1"></div><div class="co co-2"></div><div class="co co-3"></div>
+    <div class="co co-4"></div><div class="co co-5"></div><div class="co co-6"></div>
+  </div>
+  <div class="s-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="s-lbl">Contact</div>
+        <h2>Let's build<br><em>something</em><br>great.</h2>
+        <p class="contact-p">Available for freelance projects, brand work, and long-term partnerships. Based in Blantyre, Malawi — open to remote work worldwide. Usually reply within 24 hours.</p>
+      </div>
+      <div>
+        <form class="glass-form" id="cForm" novalidate>
+          <div class="gf-row">
+            <div class="gf-group"><label for="fName">Name</label><input class="gf-input" id="fName" name="from_name" placeholder="Your name" required /></div>
+            <div class="gf-group"><label for="fEmail">Email</label><input class="gf-input" id="fEmail" name="reply_to" type="email" placeholder="your@email.com" required /></div>
+          </div>
+          <div class="gf-group"><label for="fSubject">Subject</label><input class="gf-input" id="fSubject" name="subject" placeholder="Logo design, branding…" /></div>
+          <div class="gf-group"><label for="fMsg">Message</label><textarea class="gf-input gf-ta" id="fMsg" name="message" placeholder="Tell me about your project…" required></textarea></div>
+          <div class="gf-submit">
+            <button class="gf-btn" id="fBtn" type="submit">
+              <span class="gf-btn-text">Send Message</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <span class="fstatus" id="fStatus"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════ -->
+<footer>
+  <div class="foot-social">
+    <a href="https://www.instagram.com/elvarton" target="_blank" rel="noopener" class="foot-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/elvarton"  target="_blank" rel="noopener" class="foot-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://wa.me/265892048014"          target="_blank" rel="noopener" class="foot-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="mailto:elvarton@example.com"          class="foot-icon" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+    <a href="tel:+265994085332"                    class="foot-icon" aria-label="Call +265 994 085 332"><i class="fa-solid fa-phone"></i></a>
+  </div>
+  <p class="foot-copy">© <span id="yr"></span> Elvarton Kadwala · <a href="#hero">Back to top ↑</a></p>
+</footer>
+
+<!-- Main script -->
+<script src="script.js"></script>
+
+</body>
+</html>
