@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elva Rton — Visual Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- ░ PAGE LOADER ░ -->
+  <div id="loader">
+    <div class="loader-ring"></div>
+    <div class="loader-ring loader-ring--2"></div>
+  </div>
+
+  <!-- ░ CURSOR ░ -->
+  <div id="cursor-blob"></div>
+  <div id="cursor-dot"></div>
+  <div id="cursor-label">View</div>
+
+  <!-- ░ NOISE ░ -->
+  <div class="noise-layer"></div>
+  <div class="scanlines"></div>
+
+  <!-- ░░ NAV ░░ -->
+  <header id="site-nav">
+    <a href="#" class="brand">
+      <span class="brand-name">Elva<span class="brand-dot">.</span>Rton</span>
+      <span class="brand-badge">Visual Designer</span>
+    </a>
+
+    <nav class="nav-center">
+      <a href="#work"     class="nav-link">Work</a>
+      <a href="#about"    class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#contact"  class="nav-link">Contact</a>
+    </nav>
+
+    <div class="nav-right">
+      <!-- ✅ WhatsApp removed from near Hire Me. Only burger + hire btn remain -->
+      <a href="#contact" class="hire-btn">
+        <span>Hire Me</span>
+        <i class="fas fa-arrow-up-right"></i>
+      </a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <i class="fas fa-bars burger-icon-open"></i>
+        <i class="fas fa-xmark burger-icon-close"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ░ MOBILE DRAWER ░ -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-inner">
+      <nav class="drawer-nav">
+        <a href="#work"     class="dn-link" data-idx="01">Work</a>
+        <a href="#about"    class="dn-link" data-idx="02">About</a>
+        <a href="#services" class="dn-link" data-idx="03">Services</a>
+        <a href="#contact"  class="dn-link" data-idx="04">Contact</a>
+      </nav>
+      <div class="drawer-bottom">
+        <a href="https://wa.me/265994085332" target="_blank" rel="noopener" class="drawer-wa">
+          <i class="fab fa-whatsapp"></i> WhatsApp Me
+        </a>
+        <div class="drawer-socials">
+          <a href="https://facebook.com/evarton"    target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com/elvarton"  target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/elvarton"target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://behance.net/elvarton3red" target="_blank" rel="noopener"><i class="fab fa-behance"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <!-- ░░ HERO ░░ -->
+  <section id="hero">
+    <div class="mesh-bg">
+      <div class="mesh-orb mo1"></div>
+      <div class="mesh-orb mo2"></div>
+      <div class="mesh-orb mo3"></div>
+    </div>
+    <div class="grid-lines" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-pill anim-in" style="--d:0.1s">
+          <span class="pill-dot"></span>
+          Blantyre, Malawi · Open to work
+        </div>
+
+        <!-- ✅ ANIMATED NAME — letters split and stagger in -->
+        <h1 class="hero-title" aria-label="Elva Rton">
+          <span class="ht-row">
+            <!-- Each letter is a separate span for stagger animation -->
+            <span class="ht-char" style="--ci:0">E</span><span class="ht-char" style="--ci:1">l</span><span class="ht-char" style="--ci:2">v</span><span class="ht-char" style="--ci:3">a</span>
+          </span>
+          <span class="ht-row">
+            <span class="ht-char grad-char" style="--ci:4">R</span><span class="ht-char grad-char" style="--ci:5">t</span><span class="ht-char grad-char" style="--ci:6">o</span><span class="ht-char grad-char" style="--ci:7">n</span><span class="ht-char grad-char" style="--ci:8">.</span>
+          </span>
+          <span class="ht-sub anim-in" style="--d:0.9s">Graphic &amp; Web Designer</span>
+        </h1>
+
+        <p class="hero-desc anim-in" style="--d:0.75s">
+          Crafting visual worlds that make brands impossible to ignore —
+          bold identities, campaigns &amp; digital experiences built with precision and edge.
+        </p>
+        <div class="hero-actions anim-in" style="--d:0.88s">
+          <a href="#work" class="cta-primary">
+            <span>Explore Work</span>
+            <div class="cta-icon"><i class="fas fa-arrow-down"></i></div>
+          </a>
+          <a href="#contact" class="cta-ghost">Let's Talk</a>
+        </div>
+        <div class="hero-stats anim-in" style="--d:1.02s">
+          <div class="hs"><span class="hs-n" data-count="50">0</span><span class="hs-l">Projects</span></div>
+          <div class="hs-sep"></div>
+          <div class="hs"><span class="hs-n" data-count="30">0</span><span class="hs-l">Clients</span></div>
+          <div class="hs-sep"></div>
+          <div class="hs"><span class="hs-n" data-count="5">0</span><span class="hs-l">Years</span></div>
+        </div>
+      </div>
+
+      <!-- Mosaic side -->
+      <div class="hero-mosaic anim-in" style="--d:0.4s">
+        <div class="hm-card hm-a tilt-card">
+          <img src="assets/XVERSE_POSTER.png" alt="XVERSE Energy"/>
+          <div class="hm-overlay"><span class="hm-tag">Campaign</span><span class="hm-title">XVERSE Energy</span></div>
+        </div>
+        <div class="hm-card hm-b tilt-card">
+          <img src="assets/FB_IMG_1652040735134.jpg" alt="Poster Design"/>
+          <div class="hm-overlay"><span class="hm-tag">Music Brand</span><span class="hm-title">Zimveke Music</span></div>
+        </div>
+        <div class="hm-card hm-c tilt-card">
+          <img src="assets/MAGCUP-TYS.png" alt="TYS"/>
+          <div class="hm-overlay"><span class="hm-tag">Mockup</span><span class="hm-title">TYS Brand</span></div>
+        </div>
+        <div class="hm-card hm-d tilt-card">
+          <img src="assets/4nbuy__2_.png" alt="4nbuy"/>
+          <div class="hm-overlay"><span class="hm-tag">Packaging</span><span class="hm-title">4nbuy Boxes</span></div>
+        </div>
+        <div class="hm-chip float-chip">
+          <i class="fas fa-bolt"></i>
+          <span>Award-worthy<br>Design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GIF strip -->
+    <div class="hero-video-strip">
+      <div class="hvs-label"><span class="hvs-dot"></span> Featured Work</div>
+      <div class="hvs-frame">
+        <img src="assets/ads.gif" alt="4nbuy — Malawi's Premier Online Store"/>
+      </div>
+    </div>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Brand Identity</span><em>✦</em>
+        <span>Logo Design</span><em>✦</em>
+        <span>Packaging</span><em>✦</em>
+        <span>Poster Design</span><em>✦</em>
+        <span>Vehicle Branding</span><em>✦</em>
+        <span>Web Development</span><em>✦</em>
+        <span>Mockups</span><em>✦</em>
+        <span>Brand Identity</span><em>✦</em>
+        <span>Logo Design</span><em>✦</em>
+        <span>Packaging</span><em>✦</em>
+        <span>Poster Design</span><em>✦</em>
+        <span>Vehicle Branding</span><em>✦</em>
+        <span>Web Development</span><em>✦</em>
+        <span>Mockups</span><em>✦</em>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ WORK ░░ -->
+  <section id="work">
+    <div class="section-intro reveal">
+      <div class="si-left">
+        <p class="label-tag">Selected Work</p>
+        <h2 class="section-h">Recent<br><em>Projects</em></h2>
+      </div>
+      <div class="si-right">
+        <p>Brand, identity, campaign and web work across multiple industries in Malawi and beyond.</p>
+        <div class="filter-chips">
+          <button class="fchip active" data-f="all">All</button>
+          <button class="fchip" data-f="brand">Branding</button>
+          <button class="fchip" data-f="poster">Posters</button>
+          <button class="fchip" data-f="identity">Identity</button>
+          <button class="fchip" data-f="packaging">Packaging</button>
+          <button class="fchip" data-f="billboard">Billboards</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-bento" id="workBento">
+
+      <!-- Original projects -->
+      <article class="wb-card wb-hero reveal-card" data-cat="poster"
+        data-title="XVERSE Energy Drink"
+        data-year="2024"
+        data-label="Poster · Campaign"
+        data-desc="Full campaign launch poster for XVERSE Energy Drink. Designed to command attention with bold typography, electric colour gradients and dynamic composition for social media and print rollout."
+        data-tools="Adobe Photoshop,Adobe Illustrator,Lightroom"
+        data-img="assets/XVERSE_POSTER.png">
+        <div class="wb-media"><img src="assets/XVERSE_POSTER.png" alt="XVERSE"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Poster · Campaign</span><span class="wb-year">2024</span></div>
+          <h3 class="wb-title">XVERSE Energy Drink</h3>
+          <p class="wb-desc">Full campaign launch poster.</p>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-tall reveal-card" data-cat="poster"
+        data-title="Maya's Kitchen"
+        data-year="2024"
+        data-label="Poster · Food"
+        data-desc="A refined restaurant poster capturing the warmth and elegance of Maya's Kitchen. Crafted cuisine meets timeless visual taste — earthy tones, fine typography and a mouth-watering food photography layout."
+        data-tools="Adobe Photoshop,Adobe Illustrator"
+        data-img="assets/Maya_s_poster.png">
+        <div class="wb-media"><img src="assets/Maya_s_poster.png" alt="Maya's Kitchen"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Poster · Food</span><span class="wb-year">2024</span></div>
+          <h3 class="wb-title">Maya's Kitchen</h3>
+          <p class="wb-desc">Crafted cuisine. Timeless taste.</p>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-sq reveal-card" data-cat="brand"
+        data-title="TYS — Tell Your Story"
+        data-year="2023"
+        data-label="Brand · Mockup"
+        data-desc="Brand identity and merchandise mockup for TYS (Tell Your Story). The mug mockup showcases clean logo application and colour cohesion across branded merchandise."
+        data-tools="Adobe Illustrator,Adobe Photoshop,Smart Mockups"
+        data-img="assets/MAGCUP-TYS.png">
+        <div class="wb-media"><img src="assets/MAGCUP-TYS.png" alt="TYS"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Brand · Mockup</span><span class="wb-year">2023</span></div>
+          <h3 class="wb-title">TYS — Tell Your Story</h3>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-sq reveal-card" data-cat="identity"
+        data-title="Firehouse Holdings"
+        data-year="2023"
+        data-label="Logo · Identity"
+        data-desc="Logo and brand identity design for Firehouse Holdings. A bold, distinctive mark that conveys strength and authority — built for corporate communications, signage and digital platforms."
+        data-tools="Adobe Illustrator,Adobe Photoshop"
+        data-img="assets/firehouse_logo.png">
+        <div class="wb-media"><img src="assets/firehouse_logo.png" alt="Firehouse"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Logo · Identity</span><span class="wb-year">2023</span></div>
+          <h3 class="wb-title">Firehouse Holdings</h3>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-wide reveal-card" data-cat="packaging"
+        data-title="4nbuy Delivery Boxes"
+        data-year="2024"
+        data-label="Packaging · 3D"
+        data-desc="Custom delivery packaging design for 4nbuy, Malawi's premier online store. Includes 3D box mockup with full brand livery — balancing vibrant visual impact with practical print specs."
+        data-tools="Adobe Illustrator,Adobe Photoshop,Blender,Smart Mockups"
+        data-img="assets/4nbuy__2_.png">
+        <div class="wb-media"><img src="assets/4nbuy__2_.png" alt="4nbuy"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Packaging · 3D</span><span class="wb-year">2024</span></div>
+          <h3 class="wb-title">4nbuy Delivery Boxes</h3>
+          <p class="wb-desc">Malawi's premier online store packaging.</p>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-sq reveal-card" data-cat="brand"
+        data-title="4nbuy Car Branding"
+        data-year="2023"
+        data-label="Vehicle · Wrap"
+        data-desc="Full vehicle wrap design for 4nbuy's delivery fleet. Maximises brand visibility on the road with bold colour blocks, logo placement and key messaging — designed to print-ready standards."
+        data-tools="Adobe Illustrator,Adobe Photoshop"
+        data-img="assets/branding.png">
+        <div class="wb-media"><img src="assets/branding.png" alt="Car Wrap"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Vehicle · Wrap</span><span class="wb-year">2023</span></div>
+          <h3 class="wb-title">4nbuy Car Branding</h3>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <!-- ✅ NEW WORK IMAGES ADDED -->
+      <article class="wb-card wb-sq reveal-card" data-cat="poster"
+        data-title="GILZ Academy"
+        data-year="2023"
+        data-label="Flyer · Education"
+        data-desc="Event and promotional flyer for GILZ Academy. Clean layout with energetic typography designed to attract students and parents — optimised for both digital sharing and A5 print distribution."
+        data-tools="Adobe Photoshop,Adobe Illustrator"
+        data-img="assets/flyer-01.png">
+        <div class="wb-media"><img src="assets/flyer-01.png" alt="GILZ Academy Flyer"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Flyer · Education</span><span class="wb-year">2023</span></div>
+          <h3 class="wb-title">GILZ Academy</h3>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-sq reveal-card" data-cat="brand"
+        data-title="S7RED Studio"
+        data-year="2023"
+        data-label="Brand · Logo"
+        data-desc="Brand and logo identity for S7RED Studio — a creative production house. A striking wordmark that fuses bold numerics with editorial serif type, reflecting the studio's sharp, premium aesthetic."
+        data-tools="Adobe Illustrator,Adobe Photoshop"
+        data-img="assets/REDD-01__1_.png">
+        <div class="wb-media"><img src="assets/REDD-01__1_.png" alt="S7RED Studio"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Brand · Logo</span><span class="wb-year">2023</span></div>
+          <h3 class="wb-title">S7RED Studio</h3>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-sq reveal-card" data-cat="identity"
+        data-title="FIA Malawi"
+        data-year="2022"
+        data-label="Identity · Brand"
+        data-desc="Full brand identity for FIA Malawi. A professional visual system designed for an automotive/regulatory body — clean insignia, colour palette and typography guidelines for formal and digital usage."
+        data-tools="Adobe Illustrator,Adobe Photoshop,CorelDRAW"
+        data-img="assets/dfhg.png">
+        <div class="wb-media"><img src="assets/dfhg.png" alt="FIA Malawi"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Identity · Brand</span><span class="wb-year">2022</span></div>
+          <h3 class="wb-title">FIA Malawi</h3>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-wide reveal-card" data-cat="billboard"
+        data-title="King Cargo (HK) Ltd"
+        data-year="2019"
+        data-label="Flyer · Freight"
+        data-desc="Promotional flyer for King Cargo (HK) Ltd, a worldwide freight forwarding company. The design communicates global reach and reliability — clean grid layout with strong brand anchoring."
+        data-tools="Adobe Photoshop,Adobe Illustrator"
+        data-img="assets/2019-09-30.png">
+        <div class="wb-media"><img src="assets/2019-09-30.png" alt="King Cargo Flyer"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Flyer · Freight</span><span class="wb-year">2019</span></div>
+          <h3 class="wb-title">King Cargo (HK) Ltd</h3>
+          <p class="wb-desc">Worldwide freight forwarder design.</p>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-sq reveal-card" data-cat="billboard"
+        data-title="King Cargo Billboard v1"
+        data-year="2019"
+        data-label="Billboard · OOH"
+        data-desc="Out-of-home billboard design for King Cargo. Designed for high-traffic visibility with bold headline hierarchy, iconic logo lock-up and a striking colour contrast that reads clearly at distance."
+        data-tools="Adobe Photoshop,Adobe Illustrator"
+        data-img="assets/IMG_20191024_164036.jpg">
+        <div class="wb-media"><img src="assets/IMG_20191024_164036.jpg" alt="King Cargo Billboard 1"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Billboard · OOH</span><span class="wb-year">2019</span></div>
+          <h3 class="wb-title">King Cargo Billboard v1</h3>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-sq reveal-card" data-cat="billboard"
+        data-title="King Cargo Billboard v2"
+        data-year="2019"
+        data-label="Billboard · OOH"
+        data-desc="Second iteration billboard for King Cargo at the Clocktower. Refined layout with updated messaging and composition to improve readability and brand recall in the outdoor environment."
+        data-tools="Adobe Photoshop,Adobe Illustrator"
+        data-img="assets/clocktower_banner.jpg">
+        <div class="wb-media"><img src="assets/clocktower_banner.jpg" alt="King Cargo Billboard 2"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Billboard · OOH</span><span class="wb-year">2019</span></div>
+          <h3 class="wb-title">King Cargo Billboard v2</h3>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-sq reveal-card" data-cat="identity"
+        data-title="TYS Wordmark"
+        data-year="2023"
+        data-label="Logo · Wordmark"
+        data-desc="Wordmark logo design for TYS (Tell Your Story). A refined typographic mark built for versatility — readable at any scale and cohesive across digital, print and merchandise applications."
+        data-tools="Adobe Illustrator"
+        data-img="assets/tys_logo.png">
+        <div class="wb-media"><img src="assets/tys_logo.png" alt="TYS Logo"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Logo · Wordmark</span><span class="wb-year">2023</span></div>
+          <h3 class="wb-title">TYS Wordmark</h3>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+      <article class="wb-card wb-sq reveal-card" data-cat="identity"
+        data-title="Brand Mockup Sheet"
+        data-year="2024"
+        data-label="Mockup · Print"
+        data-desc="A comprehensive brand mockup sheet showcasing logo application across stationery and print collateral. Demonstrates real-world brand cohesion for client presentations and portfolio use."
+        data-tools="Adobe Illustrator,Adobe Photoshop,Smart Mockups"
+        data-img="assets/Free_Logo_Mockup_1.png">
+        <div class="wb-media"><img src="assets/Free_Logo_Mockup_1.png" alt="Brand Mockup"/><div class="wb-tint"></div></div>
+        <div class="wb-body">
+          <div class="wb-meta"><span class="wb-cat">Mockup · Print</span><span class="wb-year">2024</span></div>
+          <h3 class="wb-title">Brand Mockup Sheet</h3>
+          <div class="wb-link"><span>View Project</span><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ░░ ABOUT ░░ -->
+  <section id="about">
+    <div class="about-wrap">
+
+      <!-- ✅ Only profile photo — no extra design images -->
+      <div class="about-visual reveal">
+        <div class="about-photo-wrap">
+          <img src="assets/elvartons.png" alt="Elva Rton — Graphic Designer" class="about-photo"/>
+          <div class="about-photo-glow"></div>
+          <!-- Decorative corner accents -->
+          <div class="photo-corner photo-corner-tl"></div>
+          <div class="photo-corner photo-corner-br"></div>
+        </div>
+        <div class="about-badge float-chip">
+          <span class="ab-n">5+</span>
+          <span class="ab-t">Years of<br>Excellence</span>
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div class="about-content reveal">
+        <p class="label-tag">About Me</p>
+        <h2 class="section-h">Elvarton <em>Kadwala</em></h2>
+        <p class="about-p">A graphic and web designer rooted in <strong>Blantyre, Malawi</strong> — obsessed with translating ideas into unforgettable visual experiences. From high-energy drink campaigns to restaurant identities and digital experiences, I design with precision, culture, and intention.</p>
+        <p class="about-p">Every pixel has a purpose. Every curve tells a story.</p>
+
+        <div class="skill-grid">
+          <div class="sk-item"><i class="fas fa-fingerprint"></i><span>Brand Identity</span></div>
+          <div class="sk-item"><i class="fas fa-vector-square"></i><span>Logo Design</span></div>
+          <div class="sk-item"><i class="fas fa-layer-group"></i><span>Poster Design</span></div>
+          <div class="sk-item"><i class="fas fa-box-open"></i><span>Packaging</span></div>
+          <div class="sk-item"><i class="fas fa-car-side"></i><span>Vehicle Wrap</span></div>
+          <div class="sk-item"><i class="fas fa-code"></i><span>Web Design</span></div>
+        </div>
+
+        <div class="about-actions">
+          <a href="#contact" class="cta-primary">Work With Me</a>
+          <!-- ✅ WhatsApp styled neutrally — no green -->
+          <a href="https://wa.me/265994085332" target="_blank" rel="noopener" class="wa-neutral-pill">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+          <div class="about-socials">
+            <a href="https://facebook.com/evarton"    target="_blank" rel="noopener" class="soc-ic"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/elvarton"  target="_blank" rel="noopener" class="soc-ic"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com/in/elvarton"target="_blank" rel="noopener" class="soc-ic"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://behance.net/elvarton3red" target="_blank" rel="noopener" class="soc-ic"><i class="fab fa-behance"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ SERVICES ░░ -->
+  <section id="services">
+    <div class="section-intro reveal" style="justify-content:center; text-align:center;">
+      <div>
+        <p class="label-tag" style="justify-content:center;">What I Offer</p>
+        <h2 class="section-h" style="text-align:center;">My <em>Services</em></h2>
+      </div>
+    </div>
+
+    <!-- ✅ 7 services including Web Development -->
+    <div class="services-grid">
+      <div class="sg-card reveal-card">
+        <div class="sg-glow"></div>
+        <div class="sg-icon"><i class="fas fa-fingerprint"></i></div>
+        <h3>Brand Identity</h3>
+        <p>Complete visual identity systems — logos, palettes, typography — that define and differentiate your brand in every space.</p>
+        <span class="sg-num">01</span>
+      </div>
+      <div class="sg-card reveal-card">
+        <div class="sg-glow"></div>
+        <div class="sg-icon"><i class="fas fa-vector-square"></i></div>
+        <h3>Logo Design</h3>
+        <p>Marks crafted with personality, precision, and lasting visual impact across all touchpoints.</p>
+        <span class="sg-num">02</span>
+      </div>
+      <div class="sg-card reveal-card">
+        <div class="sg-glow"></div>
+        <div class="sg-icon"><i class="fas fa-layer-group"></i></div>
+        <h3>Print &amp; Posters</h3>
+        <p>Print materials engineered to command attention and start conversations wherever they appear.</p>
+        <span class="sg-num">03</span>
+      </div>
+      <div class="sg-card reveal-card">
+        <div class="sg-glow"></div>
+        <div class="sg-icon"><i class="fas fa-box-open"></i></div>
+        <h3>Packaging Design</h3>
+        <p>Product packaging and 3D mockups that make your product the obvious pick — on shelves or screens.</p>
+        <span class="sg-num">04</span>
+      </div>
+      <div class="sg-card reveal-card">
+        <div class="sg-glow"></div>
+        <div class="sg-icon"><i class="fas fa-car-side"></i></div>
+        <h3>Vehicle Branding</h3>
+        <p>Wraps and livery that turn every journey into powerful brand exposure on the road.</p>
+        <span class="sg-num">05</span>
+      </div>
+      <div class="sg-card reveal-card">
+        <div class="sg-glow"></div>
+        <div class="sg-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Social Media</h3>
+        <p>Thumb-stopping digital assets that build a consistent, professional brand presence online.</p>
+        <span class="sg-num">06</span>
+      </div>
+      <!-- ✅ NEW: Web Development -->
+      <div class="sg-card sg-featured reveal-card">
+        <div class="sg-glow"></div>
+        <div class="sg-icon"><i class="fas fa-code"></i></div>
+        <h3>Web Development</h3>
+        <p>Modern, responsive websites and portfolio pages — built with clean code, smooth animations, and a sharp eye for design. From landing pages to full brand websites.</p>
+        <span class="sg-num">07</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ CONTACT ░░ -->
+  <section id="contact">
+    <div class="contact-inner">
+
+      <div class="contact-info reveal">
+        <p class="label-tag">Get In Touch</p>
+        <h2 class="contact-big">Let's create<br>something<br><em>great.</em></h2>
+        <p class="contact-sub">Have a project in mind? Reach out and let's make something remarkable together.</p>
+
+       
+
+        <!-- ✅ Icons only — no text labels -->
+        <div class="contact-socials-icons">
+          <a href="https://facebook.com/evarton"    target="_blank" rel="noopener" class="cs-ic"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com/elvarton"  target="_blank" rel="noopener" class="cs-ic"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/elvarton"target="_blank" rel="noopener" class="cs-ic"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://behance.net/elvarton3red" target="_blank" rel="noopener" class="cs-ic"><i class="fab fa-behance"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal">
+        <form class="c-form" id="contactForm" novalidate>
+          <div id="form-msg" class="form-msg" role="alert" aria-live="polite"></div>
+          <div class="cf-duo">
+            <div class="cf-field">
+              <input type="text" id="cf-name" name="from_name" placeholder=" " required/>
+              <label for="cf-name">Your Name</label>
+              <span class="cf-line"></span>
+            </div>
+            <div class="cf-field">
+              <input type="email" id="cf-email" name="reply_to" placeholder=" " required/>
+              <label for="cf-email">Email Address</label>
+              <span class="cf-line"></span>
+            </div>
+          </div>
+          <div class="cf-field">
+            <input type="text" id="cf-project" name="project_type" placeholder=" "/>
+            <label for="cf-project">Project Type</label>
+            <span class="cf-line"></span>
+          </div>
+          <div class="cf-field">
+            <textarea id="cf-msg" name="message" placeholder=" " rows="4"></textarea>
+            <label for="cf-msg">Message</label>
+            <span class="cf-line"></span>
+          </div>
+          <button type="submit" class="cf-submit" id="cfSubmit">
+            <span class="cf-submit-text">Send Message</span>
+            <div class="cf-submit-icon"><i class="fas fa-paper-plane"></i></div>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-left">
+        <span class="f-logo">Elva<em>.</em>Rton</span>
+        <span class="f-loc"><i class="fas fa-map-marker-alt"></i> Blantyre, Malawi</span>
+      </div>
+      <p class="f-copy">© 2026 Elva Rton. All rights reserved.</p>
+      <div class="footer-right">
+        <a href="https://wa.me/265994085332"       target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com/evarton"     target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/elvarton"   target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/in/elvarton" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://behance.net/elvarton3red"  target="_blank" rel="noopener"><i class="fab fa-behance"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ WhatsApp float — black & white -->
+  <a href="https://wa.me/265994085332" target="_blank" rel="noopener" class="wa-float" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="wa-float-pulse"></span>
+  </a>
+
+  <!-- ░░ PROJECT MODAL ░░ -->
+  <div id="projectModal" class="pm-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="pm-box">
+      <button class="pm-close" id="pmClose" aria-label="Close"><i class="fas fa-xmark"></i></button>
+      <div class="pm-media">
+        <img id="pmImg" src="" alt=""/>
+      </div>
+      <div class="pm-content">
+        <div class="pm-meta">
+          <span class="pm-cat" id="pmCat"></span>
+          <span class="pm-year" id="pmYear"></span>
+        </div>
+        <h2 class="pm-title" id="pmTitle"></h2>
+        <p class="pm-desc" id="pmDesc"></p>
+        <div class="pm-tools" id="pmTools">
+          <p class="pm-tools-label"><i class="fas fa-wrench"></i> Tools Used</p>
+          <div class="pm-tools-list" id="pmToolsList"></div>
+        </div>
+        <div class="pm-date-row">
+          <i class="fas fa-calendar-days"></i>
+          <span id="pmDate"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
